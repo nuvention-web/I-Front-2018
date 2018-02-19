@@ -1,0 +1,48 @@
+<div class="container">
+  <div class="qone">
+    <h2>Question 1</h2>
+    <mat-radio-group [(ngModel)]="res_one">
+      <mat-radio-button *ngFor="let one of ones; let i = index" [value]="i">
+      {{one}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div>
+      {{res_one}}
+    </div>
+  </div>
+
+  <div class="qtwo">
+    <h2>Question 2</h2>
+    <mat-radio-group [(ngModel)]="res_two">
+      <mat-radio-button *ngFor="let two of twos let i = index" [value]="i">
+        {{two}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div>
+      {{res_two}}
+    </div>
+  </div>
+  <div class="qthree">
+    <h2>Question 3</h2>
+    <mat-radio-group [(ngModel)]="res_three">
+      <mat-radio-button *ngFor="let three of threes; let i = index" [value]="i">
+        {{three}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div>
+      {{res_three}}
+    </div>
+  </div>
+  <div class="qfour">
+    <h2>Question 4</h2>
+    <mat-radio-group [(ngModel)]="res_four">
+      <mat-radio-button *ngFor="let four of fours; let i = index" [value]="i">
+        {{four}}
+      </mat-radio-button>
+    </mat-radio-group>
+    <div>
+      {{res_four}}
+    </div>
+  </div>
+  <button mat-button (click)="submit()">Submit</button>
+</div>
