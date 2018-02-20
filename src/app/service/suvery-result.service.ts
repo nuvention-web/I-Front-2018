@@ -11,8 +11,11 @@ export class SuveryResultService {
   post_result(res_one, res_two, res_three, res_four) {
     const headers = new Headers({ 'Content-Type': 'application/json' });
     // const postAPI = perf_back_api + 'quiz/';
-    console.log(perf_back_api + 'quiz');
-    return this.http.post(perf_back_api + 'quiz', {
+    const hostAPI = 'http://ec2-54-213-192-222.us-west-2.compute.amazonaws.com/quiz';
+    // console.log(perf_back_api + 'quiz');
+    console.log(hostAPI);
+    // return this.http.post(perf_back_api + 'quiz', {
+    return this.http.post(hostAPI, {
       ans1: res_one,
       ans2: res_two,
       ans3: res_three,
