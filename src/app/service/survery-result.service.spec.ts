@@ -1,15 +1,15 @@
 import { TestBed, inject } from '@angular/core/testing';
 
-import { SuveryResultService } from './suvery-result.service';
+import { SurveyResultService} from './survery-result.service';
 
 describe('SuveryResultService', () => {
   beforeEach(() => {
     TestBed.configureTestingModule({
-      providers: [SuveryResultService]
+      providers: [SurveyResultService]
     });
   });
 
-  it('should be created', inject([SuveryResultService], (service: SuveryResultService) => {
+  it('should be created', inject([SurveyResultService], (service: SurveyResultService) => {
     expect(service).toBeTruthy();
   }));
 });

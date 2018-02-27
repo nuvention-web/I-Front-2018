@@ -8,15 +8,18 @@ import { MatRadioModule, MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { SurveyComponent } from './survey/survey.component';
+import { ProfileCardComponent } from './profile-card/profile-card.component';
 
 // Service
-import { SuveryResultService } from './service/suvery-result.service';
+import { SurveyResultService } from './service/survery-result.service';
+import { routes } from './routes';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    SurveyComponent
+    SurveyComponent,
+    ProfileCardComponent,
   ],
   imports: [
     BrowserModule,
@@ -24,8 +27,9 @@ import { SuveryResultService } from './service/suvery-result.service';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    routes,
   ],
-  providers: [SuveryResultService],
-  bootstrap: [AppComponent]
+  providers: [SurveyResultService],
+  bootstrap: [AppComponent],
 })
 export class AppModule { }

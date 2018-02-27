@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SuveryResultService } from '../service/suvery-result.service';
+import { SurveyResultService } from '../service/survery-result.service';
 import { ResponseForm } from '../model/response-form';
+
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-survey',
@@ -10,20 +12,18 @@ import { ResponseForm } from '../model/response-form';
 export class SurveyComponent implements OnInit {
   res_one: number;
   res_two: number;
-  res_three: number;
-  res_four: number;
 
-  ones = ["q1resp1", "q1resp2"];
-  twos = ["q2resp1", "q2resp2"];
-  threes = ["q3resp1", "q3resp2"];
-  fours = ["q4resp1", "q4resp2"];
+  ones = ['Work or school', 'Formal event', 'Casual outing', 'Kickback'];
+  twos = ['Aquatic and fruity', 'Floral', 'Spicy', 'Woody'];
 
   result: ResponseForm;
 
-  constructor(public sresult: SuveryResultService) { }
+  constructor(public router: Router,
+              public surResult: SurveyResultService) { }
 
-  submit(res_one, res_two, res_three, res_four) {
-    this.sresult.post_result(this.res_one, this.res_two, this.res_three, this.res_four);
+  submit(res_one, res_two) {
+    this.surResult.getCard(this.res_one, this.res_two);
+    this.router.navigate(['/survey']);
   }
 
   ngOnInit() {
