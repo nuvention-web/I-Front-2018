@@ -22,8 +22,8 @@ export class SurveyComponent implements OnInit {
               public surResult: SurveyResultService) { }
 
   submit(res_one, res_two) {
-    this.surResult.getCard(this.res_one, this.res_two);
-    this.router.navigate(['/survey']);
+    // this.surResult.getCard(this.res_one, this.res_two);
+    this.router.navigate(['card']);
   }
 
   ngOnInit() {
