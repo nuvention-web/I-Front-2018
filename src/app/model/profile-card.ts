@@ -1,9 +1,11 @@
 export interface ScentProfileCard {
-  perfume_name: '';
-  scent_profile_image: '';
-  perfume_profile_link: '';
-  video_url: '';
-  link_to_buy: '';
-  scent_description: '';
+  id: Number;
+  tag1: string;
+  tag2: string; // tag1 + tag2 (not in mvp0.1) = profile_name
+  profile_img_url: '';
+  video_url: string;
+  scent_description: string;
+  start_time: Number;
+  sillage: string;
 }
 

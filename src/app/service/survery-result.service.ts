@@ -4,7 +4,7 @@ import { ScentProfileCard } from '../model/profile-card';
 import { Observable } from 'rxjs/Observable';
 import {BehaviorSubject} from 'rxjs/BehaviorSubject';
 import {Subject} from 'rxjs/Subject';
-
+import 'rxjs/add/operator/map';
 const perf_back_api = 'http://127.0.0.1:5000/';
 
 @Injectable()
@@ -14,16 +14,18 @@ export class SurveyResultService {
   // public readonly survey_result: Observable<ScentProfileCard> = this._obs_result.asObservable();
 
 
-  public card: Observable<ScentProfileCard[]>;
-  public _card: BehaviorSubject<ScentProfileCard[]>;
+  public card: ScentProfileCard;
+  public perfumes: any[];
+  public obs_card: Observable<ScentProfileCard>;
+  public _card: BehaviorSubject<ScentProfileCard>;
   public cardStore: {
     cards: ScentProfileCard[];
   };
 
   constructor(public http: HttpClient) {
     this.cardStore = { cards: [] };
-    this._card = <BehaviorSubject<ScentProfileCard[]>>new BehaviorSubject([]);
-    this.card = this._card.asObservable();
+    this._card = <BehaviorSubject<ScentProfileCard>>new BehaviorSubject(this.card);
+    this.obs_card = this._card.asObservable();
   }
 
   // // deprecated post method
@@ -48,14 +50,14 @@ export class SurveyResultService {
   //     );
   // }
 
-  getCard(res_one: number, res_two: number): Observable<ScentProfileCard> {
+  get_card(res_one: number, res_two: number) {
     const cardAPI = 'http://ec2-54-213-192-222.us-west-2.compute.amazonaws.com/quiz';
-    // get the card and push it into an the cards array
-    this.http.get<ScentProfileCard>(cardAPI).subscribe(data => {
-      this.cardStore.cards.push(data);
-      this._card.next(Object.assign({}, this.cardStore).cards);
-    }, err => console.log('cannot get card from the server'));
-    return this.http.get<ScentProfileCard>(cardAPI);
+    return this.http.get(cardAPI).subscribe(
+      res_data => {
+        this._card = res_data[0];
+        this.perfumes = res_data[1];
+      }
+    );
   }
 
   // this.msSto re.obs_milestones.subscribe(((val) => {

@@ -16,18 +16,26 @@ export class ProfileCardComponent implements OnInit {
   // See comment by 'phpony'
 
   public card: ScentProfileCard;
+  public processed_url: string;
 
   public image_url: string;
 
   constructor(public surService: SurveyResultService) { }
 
+  // modify youtube url string to autoplay at given time without control display
+  set_youtube_url() {
+    this.processed_url = this.card.video_url + '?start=' + this.card.start_time + '&controls=0&autoplay=1&showinfo=0';
+    return this.processed_url;
+  }
+
   // when a scent profile card is made
   // get the profile card from the service onInit
   ngOnInit() {
-    this.surService._card.subscribe((data => {
-      this.card = data[0];
+    this.surService.obs_card.subscribe((data => {
+      this.card = data;
     }));
-    this.image_url = this.card.scent_profile_image;
+    this.image_url = this.card.profile_img_url;
+    this.card.video_url = this.set_youtube_url();
   }
 
   // this.msStore.obs_milestones.subscribe(((val) => {
