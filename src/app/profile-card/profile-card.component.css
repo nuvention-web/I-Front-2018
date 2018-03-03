@@ -6,7 +6,7 @@
   height: 30rem;
   /*width: 500px;*/
   /*height: 500px;*/
-  background-image: url('https://www.punmiris.com/himg/o.11219.jpg');
+  /*background-image: url('https://www.punmiris.com/himg/o.11219.jpg');*/
   background-repeat: no-repeat;
   background-size: cover;
   /*align-content: center;*/
@@ -20,7 +20,7 @@
   z-index: 1;
   width: 29rem;
   height: 28rem;
-  background-color: rgba(0, 0, 0, 0.8);
+  background-color: rgba(0, 0, 0, 0.4);
   /*background-color: black;*/
   /*opacity: 0.8 ;*/
 }
@@ -35,7 +35,7 @@
   margin-right: auto;
 }
 
-h2, p {
+h2, h4, p {
   z-index: 2;
   color: white;
 }

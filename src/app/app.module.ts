@@ -14,12 +14,15 @@ import { ProfileCardComponent } from './profile-card/profile-card.component';
 import { SurveyResultService } from './service/survery-result.service';
 import { routes } from './routes';
 
+// pipe
+import { SanitizerPipe } from './pipes/sanitizer.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     SurveyComponent,
     ProfileCardComponent,
+    SanitizerPipe,
   ],
   imports: [
     BrowserModule,
