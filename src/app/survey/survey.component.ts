@@ -16,6 +16,15 @@ export class SurveyComponent implements OnInit {
   ones = ['Work or school', 'Formal event', 'Casual outing', 'Kickback'];
   twos = ['Aquatic and fruity', 'Floral', 'Spicy', 'Woody'];
 
+  // mock quizes
+  fake_ones = ['Feminie' , 'Masculine', 'Doesn\'t matter as long as I love it!'];
+  fake_twos = ['Inoffensive to others', 'Generally pleasant', 'Uniquely you'];
+  fake_threes = ['Something trendy', 'Something unique', 'I\'ll try anything'];
+  fake_fours = ['Enjoying a fruity drink and an ocean breeze', 'Walking through a serene garden in full bloom',
+  'Tasting exotic cuisines and decadent desserts', 'Adventuring off the grid and deep into nature'];
+  fake_fives = ['Almost every day', 'A few times a month', 'Less than once a month'];
+
+
   result: ResponseForm;
 
   constructor(public router: Router,

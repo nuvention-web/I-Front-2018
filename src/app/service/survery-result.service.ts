@@ -56,8 +56,9 @@ export class SurveyResultService {
 
   get_card(res_one: number, res_two: number): Observable<any> {
     console.log('get_card accessed in service');
-    // const cardAPI = 'http://ec2-54-213-192-222.us-west-2.compute.amazonaws.com/quiz';
-    const cardAPI = perf_back_api + res_one + '/' + res_two;
+    const cardAPI = 'http://ec2-52-42-254-147.us-west-2.compute.amazonaws.com/quiz/' + res_one + '/' + res_two;
+    // const cardAPI = perf_back_api + res_one + '/' + res_two;
+    console.log(cardAPI);
     const obs = this.http.get(cardAPI);
     console.log(obs);
     obs.subscribe( (response: Response) => {

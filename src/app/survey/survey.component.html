@@ -1,4 +1,12 @@
-<div class="container">
+<div class="survey_container">
+  <div class="fone">
+    <h2>What type of scent are you looking for?</h2>
+    <mat-radio-group>
+      <mat-radio-button *ngFor="let fake_one of fake_ones let i = index" [value]="i">
+        {{fake_one}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
   <div class="qtwo">
     <h2>When and where might you wear the fragrance you’re looking for today?</h2>
     <mat-radio-group [(ngModel)]="res_one">
@@ -21,5 +29,37 @@
       {{res_two}}
     </div>
   </div>
-  <button mat-button (click)="submit(res_one, res_two)">Submit</button>
+  <div class="ftwo">
+    <h2>What expectations do you have for your fragrance?</h2>
+    <mat-radio-group>
+      <mat-radio-button *ngFor="let fake_two of fake_twos let i = index" [value]="i">
+        {{fake_two}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="fthree">
+    <h2>What type of fragrance would you want to use the most?</h2>
+    <mat-radio-group>
+      <mat-radio-button *ngFor="let fake_three of fake_threes let i = index" [value]="i">
+        {{fake_three}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="ffour">
+    <h2>Which sensory experience would be the most appealing to you?</h2>
+    <mat-radio-group>
+      <mat-radio-button *ngFor="let fake_four of fake_fours let i = index" [value]="i">
+        {{fake_four}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div class="ffive">
+    <h2>How often do you use/wear fragrances?</h2>
+    <mat-radio-group>
+      <mat-radio-button *ngFor="let fake_five of fake_fives let i = index" [value]="i">
+        {{fake_five}}
+      </mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <button mat-button submitBtn (click)="submit(res_one, res_two)">Submit</button>
 </div>
