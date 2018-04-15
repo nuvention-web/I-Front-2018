@@ -30,7 +30,7 @@ img {
 }
 
 .mat-button {
-  background-color: orange;
+  background-color: floralwhite;
   display: flex;
   flex-direction: column;
   width: 12rem;
@@ -46,6 +46,22 @@ img {
   line-height: 1rem;
 }
 
+/* Next & previous buttons */
+.prev, .next {
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  color: navajowhite;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border: none;
+}
+
+.prev:hover, .next:hover {
+  background-color: navajowhite;
+  color: slategrey;
+}
 
 /* dots */
 .dot {
@@ -59,7 +75,26 @@ img {
   transition: background-color 0.6s ease;
 }
 
-/* animations */
+.dots {
+  margin-top: 1rem;
+}
+
+.active, .dot:hover {
+  background-color: orange;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
 
 @keyframes fade {
   from {opacity: .4}
