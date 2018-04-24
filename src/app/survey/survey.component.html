@@ -1,65 +1,78 @@
+<!--<div class="survey_container">-->
+  <!--&lt;!&ndash;<div *ngFor="let question of questions">&ndash;&gt;-->
+  <!--<div class="slides fade">-->
+    <!--<h2>{{questions[0]}}</h2>-->
+    <!--<div class="option-btn-row">-->
+      <!--<button class="prev" (click)="plusSlides(-1)">&#10094;</button>-->
+      <!--<div class="option-btn-row">-->
+        <!--<button mat-button *ngFor="let one of option_one let i = index" [value]="i" (click)="register(i)">-->
+          <!--<img src="../assets/img_survey/dessert.png">-->
+          <!--<p class="desc">{{one}}</p>-->
+        <!--</button>-->
+      <!--</div>-->
+      <!--<button class="next" (click)="plusSlides(1)">&#10095;</button>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<div class="slides fade">>-->
+    <!--<h2>{{questions[1]}}</h2>-->
+    <!--<div class="option-btn-row">-->
+      <!--<button class="prev" (click)="plusSlides(-1)">&#10094;</button>-->
+      <!--<div class="option-btn-row">-->
+        <!--<button mat-button *ngFor="let two of option_two let i = index" [value]="i" (click)="register(i)">-->
+          <!--<img src="../assets/img_survey/fruity.png">-->
+          <!--<p class="desc">{{two}}</p>-->
+        <!--</button>-->
+      <!--</div>-->
+      <!--<button class="next" (click)="plusSlides(1)">&#10095;</button>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--<div class="slides fade">>-->
+    <!--<h2>{{questions[2]}}</h2>-->
+    <!--<div class="option-btn-row">-->
+      <!--<button class="prev" (click)="plusSlides(-1)">&#10094;</button>-->
+      <!--<div class="option-btn-row">-->
+        <!--<button mat-button *ngFor="let three of option_three let i = index" [value]="i" (click)="register(i)">-->
+          <!--<img src="../assets/img_survey/garden.png">-->
+          <!--<p class="desc">{{three}}</p>-->
+        <!--</button>-->
+      <!--</div>-->
+      <!--<button class="next" (click)="plusSlides(1)">&#10095;</button>-->
+    <!--</div>-->
+  <!--</div>-->
+
+  <!--&lt;!&ndash; slider dots &ndash;&gt;-->
+  <!--<div class = "dots" style="text-align:center">-->
+    <!--<span class="dot" onclick="currentSlide(1)"></span>-->
+    <!--<span class="dot" onclick="currentSlide(2)"></span>-->
+    <!--<span class="dot" onclick="currentSlide(3)"></span>-->
+  <!--</div>-->
+
+<!--</div>-->
+
+<!---------------------------------------------------------------------------------------------------------------->
+
 <div class="survey_container">
-  <div class="fone">
-    <h2>What type of scent are you looking for?</h2>
-    <mat-radio-group>
-      <mat-radio-button *ngFor="let fake_one of fake_ones let i = index" [value]="i">
-        {{fake_one}}
-      </mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <div class="qtwo">
-    <h2>When and where might you wear the fragrance you’re looking for today?</h2>
-    <mat-radio-group [(ngModel)]="res_one">
-      <mat-radio-button *ngFor="let one of ones let i = index" [value]="i">
-        {{one}}
-      </mat-radio-button>
-    </mat-radio-group>
-    <div>
-      {{res_one}}
+  <div class="slides fade" *ngFor="let question of questions let j = index">
+    <h2>{{question}}</h2>
+    <div class="option-btn-row">
+      <button class="prev" (click)="plusSlides(-1)">&#10094;</button>
+      <div class="option-btn-row">
+        <button mat-button *ngFor="let one of options[j] let i = index" [value]="i" (click)="register(i)">
+          <img src="../assets/img_survey/cards/{{j}}/{{i}}.png" (error)="imgerrorhandler($event)">
+          <!--/Users/SanLee/Documents/projects/perf-front/src/assets/img_survey/cards/0-->
+          <p class="desc">{{one}}</p>
+        </button>
+      </div>
+      <button class="next" (click)="plusSlides(1)">&#10095;</button>
     </div>
   </div>
-  <div class="qthree">
-    <h2>Which of the following scent types appeals most to you?</h2>
-    <mat-radio-group [(ngModel)]="res_two">
-      <mat-radio-button *ngFor="let two of twos; let i = index" [value]="i">
-        {{two}}
-      </mat-radio-button>
-    </mat-radio-group>
-    <div>
-      {{res_two}}
-    </div>
+
+  <!-- slider dots -->
+  <div class = "dots" style="text-align:center">
+    <span class="dot" (click)="currentSlide(1)"></span>
+    <span class="dot" (click)="currentSlide(2)"></span>
+    <span class="dot" (click)="currentSlide(3)"></span>
   </div>
-  <div class="ftwo">
-    <h2>What expectations do you have for your fragrance?</h2>
-    <mat-radio-group>
-      <mat-radio-button *ngFor="let fake_two of fake_twos let i = index" [value]="i">
-        {{fake_two}}
-      </mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <div class="fthree">
-    <h2>What type of fragrance would you want to use the most?</h2>
-    <mat-radio-group>
-      <mat-radio-button *ngFor="let fake_three of fake_threes let i = index" [value]="i">
-        {{fake_three}}
-      </mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <div class="ffour">
-    <h2>Which sensory experience would be the most appealing to you?</h2>
-    <mat-radio-group>
-      <mat-radio-button *ngFor="let fake_four of fake_fours let i = index" [value]="i">
-        {{fake_four}}
-      </mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <div class="ffive">
-    <h2>How often do you use/wear fragrances?</h2>
-    <mat-radio-group>
-      <mat-radio-button *ngFor="let fake_five of fake_fives let i = index" [value]="i">
-        {{fake_five}}
-      </mat-radio-button>
-    </mat-radio-group>
-  </div>
-  <button mat-button submitBtn (click)="submit(res_one, res_two)">Submit</button>
 </div>

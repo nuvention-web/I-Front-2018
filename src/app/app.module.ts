@@ -7,7 +7,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MatRadioModule, MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
-import { SurveyComponent } from './survey/survey.component';
+import { SurveyModule } from './survey/survey.module';
 import { ProfileCardComponent } from './profile-card/profile-card.component';
 
 // Service
@@ -20,7 +20,6 @@ import { SanitizerPipe } from './pipes/sanitizer.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    SurveyComponent,
     ProfileCardComponent,
     SanitizerPipe,
   ],
@@ -30,6 +29,7 @@ import { SanitizerPipe } from './pipes/sanitizer.pipe';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    SurveyModule,
     routes,
   ],
   providers: [SurveyResultService],
