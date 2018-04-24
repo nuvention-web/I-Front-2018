@@ -79,6 +79,14 @@ export class SurveyComponent implements OnInit, AfterViewInit {
     this.showSlides(this.slideIndex += n);
   }
 
+  // img src onerror handler
+  imgerrorhandler(event, card, type) {
+    console.log(event);
+    event.target.src = '../assets/img_survey/cards/1/1.jpg';
+    // need to fix
+    // event.target.src = '../assets/img_survey/cards/' + `${card}` + '/' + `${type}` + '/' + '.jpg';
+  }
+
   // API call for card
   submit(res) {
     this.surResult.get_card(this.res[0], this.res[1]);
