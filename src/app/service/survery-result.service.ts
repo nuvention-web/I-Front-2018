@@ -20,7 +20,7 @@ export class SurveyResultService {
   public card: ScentProfileCard;
   public perfumes: any[];
   public obs_card: Observable<any>;
-  public _card: BehaviorSubject<ScentProfileCard>;
+  public _card = new BehaviorSubject<ScentProfileCard>;
   public cardStore: {
     cards: ScentProfileCard[];
   };
@@ -59,6 +59,7 @@ export class SurveyResultService {
   }
 
   get_card(res_one: number, res_two: number): Observable<any> {
+    this._card = new BehaviorSubject<ScentProfileCard>;
     console.log('get_card accessed in service');
     // const cardAPI = 'http://ec2-34-211-205-1.us-west-2.compute.amazonaws.com/quiz/' + res_one + '/' + res_two;
     const cardAPI = 'http://127.0.0.1:5000/quiz/' + res_one + '/' + res_two;

@@ -1,4 +1,4 @@
-import {AfterContentChecked, AfterContentInit, Component, OnInit} from '@angular/core';
+import {AfterContentChecked, AfterContentInit, AfterViewChecked, Component, OnInit} from '@angular/core';
 import { ScentProfileCard } from '../../model/profile-card';
 import { SurveyResultService } from '../../service/survery-result.service';
 import {Subscription} from 'rxjs/Subscription';
@@ -10,7 +10,7 @@ import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
   templateUrl: './profile-card.component.html',
   styleUrls: ['./profile-card.component.css']
 })
-export class ProfileCardComponent implements OnInit, AfterContentChecked {
+export class ProfileCardComponent implements OnInit, AfterViewChecked {
 
   // Note:
   // Issue with X-XSS-Protection on youtube video
@@ -21,6 +21,7 @@ export class ProfileCardComponent implements OnInit, AfterContentChecked {
   public video_URL: string;
   public image_URL: string;
   slideIndex: number;
+  result_cards = [];
 
   constructor(public surService: SurveyResultService) { }
 
@@ -58,18 +59,28 @@ export class ProfileCardComponent implements OnInit, AfterContentChecked {
 
   // when a scent profile card is made
   // get the profile card from the service onInit
-  ngAfterContentChecked() {
-    console.log('profile card after content init');
-    this.surService._card.subscribe((val) => {
-      this.card = val;
-    });
-    const url = this.card.video_url;
-    this.image_URL = this.card.profile_img_url;
-    console.log(this.image_URL);
-    this.video_URL = this.set_youtube_url(url);
+  // ngAfterContentChecked()
+
+  ngAfterViewChecked() {
   }
 
   ngOnInit() {
-    console.log('profile card init');
+    // console.log('profile card init====');
+    // this is called twice
+    console.log('profile card after content init');
+    this.surService._card.subscribe((val) => {
+      // this.result_cards.push(val);
+      this.card = val;
+      console.log(this.card);
+    });
+    this.result_cards.push(this.card);
+    console.log(this.result_cards);
+    //
+    // one card for testing
+    // console.log(this.result_cards);
+    // this.card = this.result_cards[0];
+    this.video_URL = this.set_youtube_url(this.card.video_url);
+    this.image_URL = this.card.profile_img_url;
+    // this.video_URL = this.set_youtube_url(url);
   }
 }
