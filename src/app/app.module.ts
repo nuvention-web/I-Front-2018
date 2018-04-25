@@ -8,7 +8,7 @@ import { MatRadioModule, MatButtonModule } from '@angular/material';
 
 import { AppComponent } from './app.component';
 import { SurveyModule } from './survey/survey.module';
-import { ProfileCardComponent } from './profile-card/profile-card.component';
+import { ProfileCardComponent } from './result-page/profile-card/profile-card.component';
 
 // Service
 import { SurveyResultService } from './service/survery-result.service';
@@ -16,12 +16,14 @@ import { routes } from './routes';
 
 // pipe
 import { SanitizerPipe } from './pipes/sanitizer.pipe';
+import { ResultPageComponent } from './result-page/result-page.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     ProfileCardComponent,
     SanitizerPipe,
+    ResultPageComponent,
   ],
   imports: [
     BrowserModule,

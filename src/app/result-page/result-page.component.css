@@ -1,0 +1,27 @@
+.row {
+  display: flex;
+  flex-direction: row;
+  height: available;
+  /*background-color: lightyellow;*/
+  margin-top: 6rem;
+}
+
+:host {
+  min-height: 100vh;
+}
+
+.letter_section {
+  height: inherit;
+  border: 1px solid red;
+  width: 50%;
+  text-align: center;
+}
+
+app-result-page {
+  height: 1000px;
+}
+
+.card_section {
+  width: 50%;
+  justify-content: center;
+}

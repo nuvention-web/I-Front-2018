@@ -54,10 +54,14 @@ export class SurveyResultService {
   //     );
   // }
 
+  get_result() {
+    return this.obs_card;
+  }
+
   get_card(res_one: number, res_two: number): Observable<any> {
     console.log('get_card accessed in service');
-    const cardAPI = 'http://ec2-34-211-205-1.us-west-2.compute.amazonaws.com/quiz/' + res_one + '/' + res_two;
-    // const cardAPI = 'http://ec2-52-42-254-147.us-west-2.compute.amazonaws.com/quiz/' + res_one + '/' + res_two;
+    // const cardAPI = 'http://ec2-34-211-205-1.us-west-2.compute.amazonaws.com/quiz/' + res_one + '/' + res_two;
+    const cardAPI = 'http://127.0.0.1:5000/quiz/' + res_one + '/' + res_two;
     // const cardAPI = perf_back_api + res_one + '/' + res_two;
     console.log(cardAPI);
     const obs = this.http.get(cardAPI);

@@ -1,6 +1,6 @@
 import {AfterContentChecked, AfterContentInit, Component, OnInit} from '@angular/core';
-import { ScentProfileCard } from '../model/profile-card';
-import { SurveyResultService } from '../service/survery-result.service';
+import { ScentProfileCard } from '../../model/profile-card';
+import { SurveyResultService } from '../../service/survery-result.service';
 import {Subscription} from 'rxjs/Subscription';
 import { AsyncPipe } from '@angular/common';
 import { SafeResourceUrl, DomSanitizer } from '@angular/platform-browser';
@@ -20,6 +20,7 @@ export class ProfileCardComponent implements OnInit, AfterContentChecked {
   public card: any;
   public video_URL: string;
   public image_URL: string;
+  slideIndex: number;
 
   constructor(public surService: SurveyResultService) { }
 
@@ -31,9 +32,32 @@ export class ProfileCardComponent implements OnInit, AfterContentChecked {
     return processed_url;
   }
 
+  // profile card carousel
+  showSlides(n?) {
+    let i;
+    const slides = document.getElementsByClassName('slides');
+    const dots = document.getElementsByClassName('dot');
+    if (n > slides.length) {
+      this.slideIndex = 1;
+    }
+
+    if (n < 1) {
+      this.slideIndex = slides.length;
+    }
+
+    for (i = 0; i < slides.length; i++) {
+      (slides[i] as HTMLElement).style.display = 'none';
+    }
+
+    for (i = 0; i < dots.length; i++) {
+      dots[i].className = dots[i].className.replace('active', '');
+    }
+    (slides[this.slideIndex - 1] as HTMLElement).style.display = 'block';
+    (dots[this.slideIndex - 1] as HTMLElement).classList.add('active');
+  }
+
   // when a scent profile card is made
   // get the profile card from the service onInit
-
   ngAfterContentChecked() {
     console.log('profile card after content init');
     this.surService._card.subscribe((val) => {

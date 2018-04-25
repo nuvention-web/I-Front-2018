@@ -61,7 +61,6 @@
       <div class="option-btn-row">
         <button mat-button *ngFor="let one of options[j] let i = index" [value]="i" (click)="register(i)">
           <img src="../assets/img_survey/cards/{{j}}/{{i}}.png" (error)="imgerrorhandler($event)">
-          <!--/Users/SanLee/Documents/projects/perf-front/src/assets/img_survey/cards/0-->
           <p class="desc">{{one}}</p>
         </button>
       </div>
