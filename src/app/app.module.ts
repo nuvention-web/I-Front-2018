@@ -17,6 +17,7 @@ import { routes } from './routes';
 // pipe
 import { SanitizerPipe } from './pipes/sanitizer.pipe';
 import { ResultPageComponent } from './result-page/result-page.component';
+import { ResultComponent } from './result/result.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ResultPageComponent } from './result-page/result-page.component';
     ProfileCardComponent,
     SanitizerPipe,
     ResultPageComponent,
+    ResultComponent,
   ],
   imports: [
     BrowserModule,

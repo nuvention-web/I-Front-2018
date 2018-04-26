@@ -10,6 +10,7 @@ img {
   align-items: center;
   align-content: center;
   margin-top: 15rem;
+  padding-top: 7rem;
 
   /* center up the view port*/
   /*width: 50%;*/
@@ -53,7 +54,7 @@ img {
   /*margin-top: 3rem;*/
   padding-top: 3rem;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin-bottom: 10rem;
 }
 
 #customer_info h1, h4 {

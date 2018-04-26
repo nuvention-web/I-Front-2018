@@ -1,0 +1,19 @@
+<!--<div class="card_container slides fade" *ngFor="let card of result_cards let j = index">-->
+  <!--<div class="card" [style.background-image] = " 'url(' + image_URL + ')' ">-->
+    <!--<div class="backdrop">-->
+      <!--<iframe class="video_container" width="420" height="236" [src] = "video_URL | safe"></iframe>-->
+      <!--<h2>{{card.tag1}}</h2>-->
+      <!--<hr>-->
+      <!--<p>{{card.scent_description}}</p>-->
+    <!--</div>-->
+  <!--</div>-->
+<!--</div>-->
+
+
+<div *ngIf="isDataLoaded">
+  <div>
+    <div id="backdrop"></div>
+    <iframe class="video_container" width={{window_width}} height={{window_height}} [src] = "video_URL | safe"></iframe>
+  </div>
+</div>
+

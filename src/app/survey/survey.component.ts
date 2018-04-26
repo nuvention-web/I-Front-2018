@@ -113,7 +113,8 @@ export class SurveyComponent implements OnInit, AfterViewInit {
   // API call for card
   submit(res) {
     this.surResult.get_card(this.res[0], this.res[1], this.res[2], this.username);
-    this.router.navigate(['resultpage']);
+    // this.router.navigate(['resultpage']);
+    this.router.navigate(['result']);
   }
 
   ngAfterViewInit() {
