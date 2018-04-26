@@ -3,6 +3,63 @@ img {
   height: 8rem;
 }
 
+/* user name */
+#name_container {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  margin-top: 15rem;
+
+  /* center up the view port*/
+  /*width: 50%;*/
+  /*height: 50%;*/
+  /*margin: auto;*/
+  /*position: fixed;*/
+  /*top: 0; left: 0; bottom: 0; right: 0;*/
+  /*z-index: 999;*/
+}
+
+#user_name, #ok-btn {
+  border: none;
+  border-bottom: 2px solid red;
+  background-color: floralwhite;
+  outline: none;
+}
+
+.user_name:focus {
+  /*border: 3px solid #555;*/
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: inherit;
+}
+
+#ok-btn {
+  background-color: floralwhite;
+  border: 1px solid darkslategray;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  /*justify-content: center;*/
+  text-align: center;
+  line-height: 1em;
+  padding-right: 1.2rem;
+}
+
+#customer_info {
+  /*margin-top: 3rem;*/
+  padding-top: 3rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+#customer_info h1, h4 {
+  line-height: 0.5rem;
+}
+
 /* slides */
 .slides {
   display: none;
@@ -13,11 +70,15 @@ img {
   justify-content: center;
 }
 
-.survey_container {
+#survey_container {
+  margin-top: 40rem;
+  margin-bottom: auto;
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 /* button */
@@ -56,6 +117,7 @@ img {
   font-size: 18px;
   transition: 0.6s ease;
   border: none;
+  background-color: floralwhite;
 }
 
 .prev:hover, .next:hover {

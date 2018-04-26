@@ -1,17 +1,5 @@
-<!--Need to design a card-->
-<!--<div class="card">-->
-  <!--<div class="backdrop">-->
-    <!--&lt;!&ndash;&lt;!&ndash;&ndash;&gt;<iframe class="video_container" width="420" height="236" src="https://www.youtube.com/watch?v=Ftm2uv7-Ybw?start=1636&controls=0&autoplay=1&showinfo=0"></iframe>&ndash;&gt;-->
-    <!--<iframe class="video_container" width="420" height="236" src="https://www.youtube.com/embed/Ftm2uv7-Ybw?start=1636&controls=0&autoplay=1&showinfo=0"></iframe>-->
-    <!--<h2>Citrus</h2>-->
-    <!--<hr>-->
-    <!--<p>Lorem ipsum dolor sit amet</p>-->
-  <!--</div>-->
-<!--</div>-->
-
-
 <div class="card_container slides fade" *ngFor="let card of result_cards let j = index">
-  <div class="card" [style.background-image] = " 'url(' + card.image_URL + ')' ">
+  <div class="card" [style.background-image] = " 'url(' + image_URL + ')' ">
     <div class="backdrop">
       <iframe class="video_container" width="420" height="236" [src] = "video_URL | safe"></iframe>
       <h2>{{card.tag1}}</h2>

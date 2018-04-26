@@ -1,7 +1,9 @@
 import {AfterViewInit, Component, OnInit} from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { SurveyResultService } from '../service/survery-result.service';
-import { ResponseForm } from '../model/response-form';
+// import { ResponseForm } from '../model/response-form';
+// import {FormControl, Validators} from '@angular/forms';
+
 
 import { Router } from '@angular/router';
 
@@ -11,6 +13,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./survey.component.css']
 })
 export class SurveyComponent implements OnInit, AfterViewInit {
+  // Not used here, but will be used in the purchase page
+  // emailFormControl = new FormControl('', [
+  //   Validators.required,
+  //   Validators.email,
+  // ]);
+  //
+
+  username  = '';
+  public input: any;
   res_one = -1;
   res_two = -1;
   res_three = -1;
@@ -79,6 +90,18 @@ export class SurveyComponent implements OnInit, AfterViewInit {
     this.showSlides(this.slideIndex += n);
   }
 
+  to_survey() {
+    /*document.getElementById('survey_container').scrollIntoView({
+      behavior: 'smooth',
+      block: 'center'
+    });*/
+    document.getElementById('customer_info').scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+      inline: 'nearest'
+    });
+  }
+
   // img src onerror handler
   imgerrorhandler(event, card, type) {
     console.log(event);
@@ -89,12 +112,18 @@ export class SurveyComponent implements OnInit, AfterViewInit {
 
   // API call for card
   submit(res) {
-    this.surResult.get_card(this.res[0], this.res[1]);
+    this.surResult.get_card(this.res[0], this.res[1], this.res[2], this.username);
     this.router.navigate(['resultpage']);
   }
 
   ngAfterViewInit() {
     this.showSlides();
+    this.input.addEventListener('keyup', function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+        document.getElementById('ok-btn').click();
+      }
+    });
   }
 
   currentSlide(n: number) {
@@ -102,6 +131,17 @@ export class SurveyComponent implements OnInit, AfterViewInit {
   }
 
   ngOnInit() {
+    this.input = document.getElementById('user_name');
+    let width = Number(window.innerWidth);
+    console.log(width/10 + 'rem');
+    let height = window.innerHeight;
+    document.getElementById('survey_container').style.marginBottom = width / 60 + 'rem';
+
+    document.getElementById('name_container').scrollIntoView({
+      behavior: 'smooth',
+      block: 'center',
+      inline: 'nearest'
+    });
   }
 
 }

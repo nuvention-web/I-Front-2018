@@ -1,59 +1,33 @@
-<!--<div class="survey_container">-->
-  <!--&lt;!&ndash;<div *ngFor="let question of questions">&ndash;&gt;-->
-  <!--<div class="slides fade">-->
-    <!--<h2>{{questions[0]}}</h2>-->
-    <!--<div class="option-btn-row">-->
-      <!--<button class="prev" (click)="plusSlides(-1)">&#10094;</button>-->
-      <!--<div class="option-btn-row">-->
-        <!--<button mat-button *ngFor="let one of option_one let i = index" [value]="i" (click)="register(i)">-->
-          <!--<img src="../assets/img_survey/dessert.png">-->
-          <!--<p class="desc">{{one}}</p>-->
-        <!--</button>-->
-      <!--</div>-->
-      <!--<button class="next" (click)="plusSlides(1)">&#10095;</button>-->
-    <!--</div>-->
-  <!--</div>-->
 
-  <!--<div class="slides fade">>-->
-    <!--<h2>{{questions[1]}}</h2>-->
-    <!--<div class="option-btn-row">-->
-      <!--<button class="prev" (click)="plusSlides(-1)">&#10094;</button>-->
-      <!--<div class="option-btn-row">-->
-        <!--<button mat-button *ngFor="let two of option_two let i = index" [value]="i" (click)="register(i)">-->
-          <!--<img src="../assets/img_survey/fruity.png">-->
-          <!--<p class="desc">{{two}}</p>-->
-        <!--</button>-->
-      <!--</div>-->
-      <!--<button class="next" (click)="plusSlides(1)">&#10095;</button>-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--<div class="slides fade">>-->
-    <!--<h2>{{questions[2]}}</h2>-->
-    <!--<div class="option-btn-row">-->
-      <!--<button class="prev" (click)="plusSlides(-1)">&#10094;</button>-->
-      <!--<div class="option-btn-row">-->
-        <!--<button mat-button *ngFor="let three of option_three let i = index" [value]="i" (click)="register(i)">-->
-          <!--<img src="../assets/img_survey/garden.png">-->
-          <!--<p class="desc">{{three}}</p>-->
-        <!--</button>-->
-      <!--</div>-->
-      <!--<button class="next" (click)="plusSlides(1)">&#10095;</button>-->
-    <!--</div>-->
-  <!--</div>-->
-
-  <!--&lt;!&ndash; slider dots &ndash;&gt;-->
-  <!--<div class = "dots" style="text-align:center">-->
-    <!--<span class="dot" onclick="currentSlide(1)"></span>-->
-    <!--<span class="dot" onclick="currentSlide(2)"></span>-->
-    <!--<span class="dot" onclick="currentSlide(3)"></span>-->
-  <!--</div>-->
-
+<!-------------------------------------------------------------------------------------------------------------------->
+<!--<div class="intro_container">-->
+  <!--<h3> What is your name?</h3>-->
+  <!--<form class="example-form">-->
+    <!--<mat-form-field class="example-full-width">-->
+      <!--<input matInput placeholder="Email" [formControl]="emailFormControl">-->
+      <!--<mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">-->
+        <!--Please enter a valid email address-->
+      <!--</mat-error>-->
+      <!--<mat-error *ngIf="emailFormControl.hasError('required')">-->
+        <!--Email is <strong>required</strong>-->
+      <!--</mat-error>-->
+    <!--</mat-form-field>-->
+  <!--</form>-->
 <!--</div>-->
 
-<!---------------------------------------------------------------------------------------------------------------->
+<div id="name_container">
+  <h2>What is your name?</h2>
+  <div class="row">
+    <input id="user_name" placeholder = "Your Name Here" [(ngModel)]="username">
+    <button id="ok-btn" *ngIf="username" (click)="to_survey()">ok</button>
+  </div>
+</div>
 
-<div class="survey_container">
+<div id="survey_container">
+  <div id="customer_info">
+    <h1>Perf</h1>
+    <h4>For {{username || 'Me'}}</h4>
+  </div>
   <div class="slides fade" *ngFor="let question of questions let j = index">
     <h2>{{question}}</h2>
     <div class="option-btn-row">
