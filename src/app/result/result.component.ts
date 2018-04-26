@@ -18,7 +18,7 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   public card: any;
   public video_URL: string;
   public image_URL: string;
-  slideIndex: number;
+  slideIndex = 1;
   public result_cards = [];
   window_width: number;
   window_height: number;
@@ -27,9 +27,11 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
 
   // modify youtube url string to autoplay at given time without control display
   set_youtube_url(url) {
+    console.log(url);
     const re = 'watch?v=';
     url = url.replace(re, 'embed/');
-    const processed_url = url + '?start=' + this.card.start_time + '&controls=0&autoplay=1&showinfo=0';
+    const processed_url = url + '?start=' + this.card[1].start_time + '&controls=0&autoplay=1&showinfo=0';
+    console.log(processed_url);
     return processed_url;
   }
 
@@ -37,14 +39,15 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   showSlides(n?) {
     let i;
     const slides = document.getElementsByClassName('slides');
+    console.log(slides);
     const dots = document.getElementsByClassName('dot');
     if (n > slides.length) {
-      this.slideIndex = 1;
+      this.slideIndex = 2;
     }
 
-    if (n < 1) {
-      this.slideIndex = slides.length;
-    }
+    // if (n < 1) {
+    //   this.slideIndex = slides.length;
+    // }
 
     for (i = 0; i < slides.length; i++) {
       (slides[i] as HTMLElement).style.display = 'none';
@@ -53,7 +56,7 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     for (i = 0; i < dots.length; i++) {
       dots[i].className = dots[i].className.replace('active', '');
     }
-    (slides[this.slideIndex - 1] as HTMLElement).style.display = 'block';
+    (slides[this.slideIndex - 1] as HTMLElement).style.display = 'flex';
     (dots[this.slideIndex - 1] as HTMLElement).classList.add('active');
   }
 
@@ -64,11 +67,12 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
 
   test_func() {
     console.log('test_func called');
-    // setTimeout(function() { this.show_next_card(); }, 5000);
+    setTimeout(function() { this.show_next_card(); }, 5000);
   }
 
   ngOnChanges() {
-    setInterval(this.show_next_card(), 5000);
+    console.log('in ngOnChanges');
+    // setInterval(this.show_next_card(), 5000);
   }
 
   // when a scent profile card is made
@@ -82,7 +86,7 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
       if (val) {
         this.isDataLoaded = true;
         // this.show_next_card();
-        this.test_func();
+        // this.test_func();
       }
       this.card = val;
       console.log(this.card);
@@ -90,27 +94,24 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
 
     });
     if (this.card !== undefined) {
-      this.result_cards.push(this.card);
+      // this.result_cards.push(this.card);
+      this.result_cards = this.card;
       console.log(this.result_cards);
+      console.log(this.result_cards[1]);
     }
-    //
-    // one card for testing
-    // console.log(this.result_cards);
-    // this.card = this.result_cards[0];
-    this.video_URL = this.set_youtube_url(this.card.video_url);
-    this.image_URL = this.card.profile_img_url;
+    this.video_URL = this.set_youtube_url(this.result_cards[1].vid_lnk);
+    this.image_URL = this.result_cards[1].image_lnk;
   }
 
   ngAfterViewInit() {
     // set backdrop
     document.getElementById('backdrop').style.width = this.window_width.toString() + 'px';
     document.getElementById('backdrop').style.height = this.window_height.toString() + 'px';
+    this.showSlides(1);
   }
 
   ngOnInit() {
     this.window_width = window.innerWidth;
     this.window_height = window.innerHeight;
-    console.log(this.window_height);
-    console.log(this.window_width);
   }
 }

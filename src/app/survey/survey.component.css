@@ -1,6 +1,6 @@
 img {
-  width: 12rem;
-  height: 8rem;
+  width: 15rem;
+  height: 10rem;
 }
 
 /* user name */
@@ -9,8 +9,8 @@ img {
   justify-content: center;
   align-items: center;
   align-content: center;
-  margin-top: 15rem;
-  padding-top: 7rem;
+  /*margin-top: 15rem;*/
+  padding-top: 12rem;
 
   /* center up the view port*/
   /*width: 50%;*/
@@ -54,7 +54,7 @@ img {
   /*margin-top: 3rem;*/
   padding-top: 3rem;
   justify-content: center;
-  margin-bottom: 10rem;
+  margin-bottom: 4rem;
 }
 
 #customer_info h1, h4 {
@@ -92,10 +92,10 @@ img {
 }
 
 .mat-button {
-  background-color: floralwhite;
+  background-color: navajowhite;
   display: flex;
   flex-direction: column;
-  width: 12rem;
+  width: 15rem;
   padding: 0px 0px;
   max-width: inherit;
   white-space: pre-wrap;

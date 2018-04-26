@@ -65,5 +65,6 @@ hr {
 }
 
 .slides {
-  display: none;
+  display: flex;
+  justify-content: center;
 }

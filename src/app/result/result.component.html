@@ -10,14 +10,14 @@
 <!--</div>-->
 
 
-<div *ngIf="isDataLoaded">
-  <div id="result_continer" *ngFor="let card of result_cards" let i="index">
+<div id="result_continer" *ngIf="isDataLoaded">
+  <div class="slides" *ngFor="let card of result_cards" let i="index">
     <div id="backdrop"></div>
     <div id="text_intro">
-      <h1>{{card.tag1}}</h1>
+      <h1>{{card.name}}</h1>
       <hr>
-      <h2>{{card.tag1}}</h2>
-      <h3>{{card.scent_description || 'no card desc'}}</h3>
+      <h2>{{card.name}}</h2>
+      <h3>{{card.description || 'no card desc'}}</h3>
       <button *ngIf="show_button"></button>
     </div>
     <div class="video_container">
