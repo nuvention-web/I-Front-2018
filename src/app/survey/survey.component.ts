@@ -104,7 +104,6 @@ export class SurveyComponent implements OnInit, AfterViewInit {
 
   // img src onerror handler
   imgerrorhandler(event, card, type) {
-    console.log(event);
     event.target.src = '../assets/img_survey/cards/1/1.jpg';
     // need to fix
     // event.target.src = '../assets/img_survey/cards/' + `${card}` + '/' + `${type}` + '/' + '.jpg';
@@ -134,7 +133,6 @@ export class SurveyComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     this.input = document.getElementById('user_name');
     let width = Number(window.innerWidth);
-    console.log(width/10 + 'rem');
     let height = window.innerHeight;
     document.getElementById('survey_container').style.marginBottom = width / 60 + 'rem';
 

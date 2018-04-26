@@ -15,18 +15,32 @@
 }
 
 #backdrop {
+  position: absolute;
+  z-index: 99;
   margin: auto;
   padding-top: 1rem;
-  z-index: 999;
   /*width: 29rem;*/
   /*height: 28rem;*/
-  background-color: rgba(0, 0, 0, 0.4);
+  background-color: rgba(0, 0, 0, 0.7);
 
   /*background-color: black;*/
   /*opacity: 0.8 ;*/
 }
 
+#text_intro {
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: whitesmoke;
+  width: 80vw;
+  margin-top: 10rem;
+}
+
 .video_container {
+  position: absolute;
   z-index: 5;
   /*width: 420px;*/
   /*height: 236px;*/
@@ -36,11 +50,20 @@
   /*margin-right: auto;*/
 }
 
+#result_continer {
+  display: flex;
+  justify-content: center;
+}
+
 h2, h4, p {
   z-index: 2;
   color: white;
 }
 
 hr {
-  width: 80%;
+  width: 90%;
+}
+
+.slides {
+  display: none;
 }

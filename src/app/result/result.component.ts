@@ -1,4 +1,4 @@
-import {AfterContentChecked, AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterContentChecked, AfterViewInit, Component, OnChanges, OnInit} from '@angular/core';
 import { SurveyResultService } from '../service/survery-result.service';
 
 @Component({
@@ -6,7 +6,7 @@ import { SurveyResultService } from '../service/survery-result.service';
   templateUrl: './result.component.html',
   styleUrls: ['./result.component.css']
 })
-export class ResultComponent implements OnInit, AfterContentChecked, AfterViewInit {
+export class ResultComponent implements OnInit, AfterContentChecked, AfterViewInit, OnChanges {
 
   // Note:
   // Issue with X-XSS-Protection on youtube video
@@ -14,11 +14,12 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   // See comment by 'phpony'
 
   isDataLoaded = false;
+  show_button = false;
   public card: any;
   public video_URL: string;
   public image_URL: string;
   slideIndex: number;
-  result_cards = [];
+  public result_cards = [];
   window_width: number;
   window_height: number;
 
@@ -56,6 +57,20 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     (dots[this.slideIndex - 1] as HTMLElement).classList.add('active');
   }
 
+  show_next_card() {
+    console.log('show_next_card called');
+    this.show_button = true;
+  }
+
+  test_func() {
+    console.log('test_func called');
+    // setTimeout(function() { this.show_next_card(); }, 5000);
+  }
+
+  ngOnChanges() {
+    setInterval(this.show_next_card(), 5000);
+  }
+
   // when a scent profile card is made
   // get the profile card from the service onInit
   // ngAfterContentChecked()
@@ -66,6 +81,8 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     this.surService._card.subscribe((val) => {
       if (val) {
         this.isDataLoaded = true;
+        // this.show_next_card();
+        this.test_func();
       }
       this.card = val;
       console.log(this.card);
@@ -74,15 +91,14 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     });
     if (this.card !== undefined) {
       this.result_cards.push(this.card);
+      console.log(this.result_cards);
     }
-    console.log(this.result_cards);
     //
     // one card for testing
     // console.log(this.result_cards);
     // this.card = this.result_cards[0];
     this.video_URL = this.set_youtube_url(this.card.video_url);
     this.image_URL = this.card.profile_img_url;
-    // this.video_URL = this.set_youtube_url(url);
   }
 
   ngAfterViewInit() {

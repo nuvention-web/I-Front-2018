@@ -11,9 +11,18 @@
 
 
 <div *ngIf="isDataLoaded">
-  <div>
+  <div id="result_continer" *ngFor="let card of result_cards" let i="index">
     <div id="backdrop"></div>
-    <iframe class="video_container" width={{window_width}} height={{window_height}} [src] = "video_URL | safe"></iframe>
+    <div id="text_intro">
+      <h1>{{card.tag1}}</h1>
+      <hr>
+      <h2>{{card.tag1}}</h2>
+      <h3>{{card.scent_description || 'no card desc'}}</h3>
+      <button *ngIf="show_button"></button>
+    </div>
+    <div class="video_container">
+      <iframe width={{window_width}} height={{window_height}} [src] = "video_URL | safe"></iframe>
+    </div>
   </div>
 </div>
 
