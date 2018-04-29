@@ -91,7 +91,7 @@ export class SurveyResultService {
     const object_to_send_object = {q1: res_one, q2: res_two, q3: res_three, name: username};
 
     // const cardAPI = 'http://ec2-34-211-205-1.us-west-2.compute.amazonaws.com/quiz/' + res_one + '/' + res_two;
-    const cardAPI = perf_back_api + 'notbought';
+    const cardAPI = perf_back_api + 'notbought/mode';
     console.log(cardAPI);
     const obs = this.http.post(cardAPI, {
       q1: this.one_options[res_one],

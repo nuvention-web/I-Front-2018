@@ -121,8 +121,14 @@ img {
   background-color: floralwhite;
 }
 
+button:active,
+button:focus {
+  -moz-outline-style: none;
+  outline: none;
+}
+
 .prev:hover, .next:hover {
-  background-color: navajowhite;
+  background-color: #FFE3F4;
   color: slategrey;
 }
 

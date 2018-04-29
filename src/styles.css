@@ -4,5 +4,6 @@
 html, body {
   background-color: floralwhite;
   min-height: 100%;
-  font-family: "Lucida Sans", sans-serif;
+  /*font-family: monaco,Consolas,"Lucida Console",monospace*/
+  font-family: "Arial Black","Arial Bold",Gadget,sans-serif;
 }
