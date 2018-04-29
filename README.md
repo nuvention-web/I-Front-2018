@@ -8,7 +8,7 @@
 ## How to run the MVP 
 
 1. Front page
-- http://perffront.s3-website-us-east-1.amazonaws.com/survey<br>
+- http://perffront.s3-website-us-east-1.amazonaws.com<br>
 2. Backend server
 - API endpoint: http://ec2-52-42-254-147.us-west-2.compute.amazonaws.com/ 
 <br>

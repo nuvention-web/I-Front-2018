@@ -1,10 +1,171 @@
-.survey_container {
-  /*display: flex;*/
-  /*text-align: center;*/
+img {
+  width: 15rem;
+  height: 10rem;
+}
+
+/* user name */
+#name_container {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  /*margin-top: 15rem;*/
+  padding-top: 12rem;
+
+  /* center up the view port*/
+  /*width: 50%;*/
+  /*height: 50%;*/
+  /*margin: auto;*/
+  /*position: fixed;*/
+  /*top: 0; left: 0; bottom: 0; right: 0;*/
+  /*z-index: 999;*/
+}
+
+#user_name, #ok-btn {
+  border: none;
+  border-bottom: 2px solid red;
+  background-color: floralwhite;
+  outline: none;
+}
+
+.user_name:focus {
+  /*border: 3px solid #555;*/
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: inherit;
+}
+
+#ok-btn {
+  background-color: floralwhite;
+  border: 1px solid darkslategray;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  /*justify-content: center;*/
+  text-align: center;
+  line-height: 1em;
+  padding-right: 1.2rem;
+}
+
+#customer_info {
+  /*margin-top: 3rem;*/
+  padding-top: 3rem;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+#customer_info h1, h4 {
+  line-height: 0.5rem;
+}
+
+/* slides */
+.slides {
+  display: none;
+}
+
+.fade {
+  display: flex;
+  justify-content: center;
+}
+
+#survey_container {
+  margin-top: 40rem;
+  margin-bottom: auto;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
   align-content: center;
 }
 
+/* button */
+
+.option-btn-row {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-item: center;
+}
+
 .mat-button {
-  background-color: orange;
+  background-color: navajowhite;
+  display: flex;
+  flex-direction: column;
+  width: 15rem;
+  padding: 0px 0px;
+  max-width: inherit;
+  white-space: pre-wrap;
+
+  margin:0 0.25rem;
+  line-height: 0;
+}
+
+.desc {
+  line-height: 1rem;
+}
+
+/* Next & previous buttons */
+.prev, .next {
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  color: navajowhite;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border: none;
+  background-color: floralwhite;
+}
+
+button:active,
+button:focus {
+  -moz-outline-style: none;
+  outline: none;
+}
+
+.prev:hover, .next:hover {
+  background-color: #FFE3F4;
+  color: slategrey;
+}
+
+/* dots */
+.dot {
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 0 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+.dots {
   margin-top: 1rem;
+}
+
+.active, .dot:hover {
+  background-color: orange;
+}
+
+/* Fading animation */
+.fade {
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
+}
+
+@-webkit-keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
+}
+
+@keyframes fade {
+  from {opacity: .4}
+  to {opacity: 1}
 }
