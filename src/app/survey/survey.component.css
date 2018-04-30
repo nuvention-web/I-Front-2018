@@ -3,6 +3,11 @@ img {
   height: 10rem;
 }
 
+#logo {
+  width: 5rem;
+  height: 5rem;
+}
+
 /* user name */
 #name_container {
   text-align: center;
@@ -11,6 +16,7 @@ img {
   align-content: center;
   /*margin-top: 15rem;*/
   padding-top: 12rem;
+  margin: auto;
 
   /* center up the view port*/
   /*width: 50%;*/
