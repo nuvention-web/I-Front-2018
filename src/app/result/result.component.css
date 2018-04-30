@@ -1,0 +1,142 @@
+#mid_section {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#result_continer {
+  display: flex;
+  justify-content: center;
+  width: 80vw;
+  height: 70vh;
+}
+
+#container {
+  display: block;
+  margin: auto;
+}
+
+#identity_box {
+  text-align: center;
+  color: black;
+  margin: auto;
+}
+
+#identity_box h1 {
+  margin-bottom: 0.5rem;
+}
+
+#cardnames {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 0;
+}
+
+#backdrop {
+  position: absolute;
+  z-index: 99;
+  background-color: rgba(0, 0, 0, 0.4);
+  max-width: 80vw;
+  max-height: 70vh;
+}
+
+#text_intro {
+  display: flex;
+  flex-direction: column;
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: whitesmoke;
+  width: 60vw;
+  margin-top: 0;
+}
+
+.video_container {
+  position: absolute;
+  z-index: 5;
+  border: none;
+  /*display: block;*/
+  /*margin-left: auto;*/
+  /*margin-right: auto;*/
+}
+
+h2, h4, p {
+  z-index: 2;
+  line-height: 0.5rem;
+}
+
+hr {
+  width: 90%;
+}
+
+.slides {
+  display: flex;
+  justify-content: center;
+  max-width: 80vw;
+  max-height: 68vh;
+}
+
+.frame {
+  width: 80vw;
+  height: 70vh;
+}
+
+.prev, .next {
+  top: 50%;
+  width: auto;
+  padding: 16px;
+  color: B0C7F4;
+  font-weight: bold;
+  font-size: 18px;
+  transition: 0.6s ease;
+  border: none;
+  background-color: floralwhite;
+  margin: 0 0.2rem;
+}
+
+.prev:hover, .next:hover {
+  background-color: navajowhite;
+  color: slategrey;
+}
+
+.dot {
+  margin-top: 1.5rem;
+  cursor: pointer;
+  height: 15px;
+  width: 15px;
+  margin: 1.5rem 2px;
+  background-color: #bbb;
+  border-radius: 50%;
+  display: inline-block;
+  transition: background-color 0.6s ease;
+}
+
+button:active,
+button:focus {
+  -moz-outline-style: none;
+  outline: none;
+  transition: background-color 0.6s ease;
+}
+
+.active, .dot:hover {
+  background-color: #FFE3F4;
+}
+
+#purchase_btn {
+  min-width: 5rem;
+  min-height: 2rem;
+  width: 10rem;
+  height: 3rem;
+  background-color: #FFE3F4;
+  border-radius: 5px;
+  font-size: large;
+  /*#FFE3F4*/
+  /*#373E40*/
+
+}
+
+purchase:active {
+
+}
