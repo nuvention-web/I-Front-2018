@@ -37,7 +37,8 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
 
   goto_purchase() {
     console.log('purchase button clicked');
-    window.location.href = 'https://www.tryperf.com/purchase';
+    window.location.href = 'https://www.tryperf.com/shop';
+    // window.location.href = 'https://www.tryperf.com/purchase';
   }
 
   ngOnChanges() {
@@ -72,7 +73,10 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
       }
     }
     if (this.button_checker[0] && this.button_checker[1] && this.button_checker[2]) {
-      this.show_purchase = true;
+      const p_btns = document.getElementsByClassName('purchase_btn');
+      (p_btns[2] as HTMLElement).style.opacity = '1';
+      (p_btns[2] as HTMLElement).style.visibility = 'visible';
+      // this.show_purchase = true;
     }
   }
 
@@ -83,7 +87,6 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     document.getElementById('card_desc_' + i).style.opacity = '1';
     document.getElementById('card_desc_' + i).innerHTML = this.result_cards[i].description;
     this.button_checker[i] = true;
-    console.log(this.button_checker[i]);
   }
 
   killEvent(e, i: number) {

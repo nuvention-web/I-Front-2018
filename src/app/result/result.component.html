@@ -7,8 +7,8 @@
         <h4 class="card_content" [attr.id]="'card_desc_' + i"></h4>
         <hr class="card_content" [attr.id]="'hr_' + i">
       </div>
-      </div>
-    <button id="purchase_btn" *ngIf="show_purchase" (click)="goto_purchase()">PURCHASE</button>
+      <button class="purchase_btn" (click)="goto_purchase()">PURCHASE</button>
+    </div>
     <div id="backdrop"></div>
     </div>
 </div>

@@ -20,7 +20,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  z-index: 100;
+  z-index: 15;
   justify-content: center;
   align-items: center;
   text-align: center;
@@ -44,6 +44,27 @@ hr {
 .card_content {
   transition: opacity 0.5s ease-in-out 0.2s;
 }
+
+.purchase_btn {
+  margin-top: 17rem;
+  margin-left: 3rem;
+  position: absolute;
+
+  visibility: hidden;
+  z-index: 20;
+
+  width: 11rem;
+  height: 4rem;
+  background-color: orange;
+  color: whitesmoke;
+  border-radius: 3px;
+  border: yellow;
+
+  transition: opacity 1s;
+}
+
+
+/* for smooth fade-in of the page */
 
 /*#page {*/
   /*-webkit-animation: fadein 2s; !* Safari, Chrome and Opera > 12.1 *!*/
