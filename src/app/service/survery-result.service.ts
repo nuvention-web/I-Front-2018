@@ -34,27 +34,6 @@ export class SurveyResultService {
     this._card = <BehaviorSubject<ScentProfileCard>>new BehaviorSubject(this.card);
     this.obs_card = this._card.asObservable();
   }
-  // // deprecated post method
-  // post_result(res_one, res_two) {
-  //   const headers = new Headers({ 'Content-Type': 'application/json' });
-  //   // const postAPI = perf_back_api + 'quiz/';
-  //   const hostAPI = 'http://ec2-54-213-192-222.us-west-2.compute.amazonaws.com/quiz';
-  //   // console.log(perf_back_api + 'quiz');
-  //   console.log(hostAPI);
-  //   // return this.http.post(perf_back_api + 'quiz', {
-  //   return this.http.post(hostAPI, {
-  //     ans1: res_one,
-  //     ans2: res_two,
-  //   })
-  //     .subscribe(
-  //       res => {
-  //         console.log(res);
-  //       },
-  //       err => {
-  //         console.log(err);
-  //       }
-  //     );
-  // }
 
   get_result() {
     return this.obs_card;
@@ -87,18 +66,15 @@ export class SurveyResultService {
   get_card(res_one: number, res_two: number, res_three: number, username: string): Observable<any> {
     this._card = new BehaviorSubject<ScentProfileCard>(this.card);
     console.log('get_card accessed in service');
-    const object_to_send = JSON.stringify({q1: res_one, q2: res_two, q3: res_three, name: username});
-    const object_to_send_object = {q1: res_one, q2: res_two, q3: res_three, name: username};
 
-    // const cardAPI = 'http://ec2-34-211-205-1.us-west-2.compute.amazonaws.com/quiz/' + res_one + '/' + res_two;
     const cardAPI = perf_back_api + 'notbought/mode';
     console.log(cardAPI);
     const obs = this.http.post(cardAPI, {
       q1: this.one_options[res_one],
-      // q2: this.two_options[res_two],
-      q2: 'Dreamer',
-      // q3: this.three_options[res_three],
-      q3: 'Daredevil',
+      q2: this.two_options[res_two],
+      // q2: 'Dreamer',
+      q3: this.three_options[res_three],
+      // q3: 'Daredevil',
       name: username
     });
     console.log(obs);
