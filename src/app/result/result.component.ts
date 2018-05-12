@@ -1,6 +1,7 @@
 import {AfterContentChecked, AfterViewInit, Component, OnChanges, OnInit} from '@angular/core';
 import { SurveyResultService } from '../service/survery-result.service';
 
+
 @Component({
   selector: 'app-result',
   templateUrl: './result.component.html',
@@ -14,12 +15,13 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   // See comment by 'phpony'
 
   isDataLoaded = false;
+  show_email = false;
+  public user_email = '';
   button_checker = [false, false, false];
   public show_purchase = false;
   public card: any;
   // public video_URL: string;
   // public image_URL: string;
-  // slideIndex = 1;
   public result_cards = [];
   window_width: number;
   window_height: number;
@@ -36,13 +38,16 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   }
 
   goto_purchase() {
-    console.log('purchase button clicked');
-    window.location.href = 'https://www.tryperf.com/shop';
-    // window.location.href = 'https://www.tryperf.com/purchase';
+    if (this.show_email === true && this.user_email !== '') {
+      this.surService.send_result(this.result_cards, this.user_email);
+      // window.location.href = 'https://www.tryperf.com/shop';
+    } else {
+      this.show_email = true;
+      console.log(this.show_email);
+    }
   }
 
   ngOnChanges() {
-    console.log('in ngOnChanges');
   }
 
   // when a scent profile card is made
@@ -77,6 +82,12 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
       (p_btns[2] as HTMLElement).style.opacity = '1';
       (p_btns[2] as HTMLElement).style.visibility = 'visible';
       // this.show_purchase = true;
+
+      if (this.show_email === true) {
+        const email_input = document.getElementsByClassName('email_holder');
+        (email_input[2] as HTMLElement).style.opacity = '1';
+        (email_input[2] as HTMLElement).style.visibility = 'visible';
+      }
     }
   }
 

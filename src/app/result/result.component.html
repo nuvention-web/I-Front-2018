@@ -1,3 +1,4 @@
+<!--<link href="node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">-->
 <div id="page">
   <div id="row_cards">
     <div class="cards" *ngFor="let card of result_cards let i=index" [attr.id]="'card_' + i"
@@ -8,7 +9,15 @@
         <hr class="card_content" [attr.id]="'hr_' + i">
       </div>
       <button class="purchase_btn" (click)="goto_purchase()">PURCHASE</button>
+      <!--<mat-form-field>-->
+      <!--<textarea  class="email_holder"  *ngIf="show_email" matInput placeholder="Leave an email"></textarea>-->
+      <!--</mat-form-field>-->
+      <!--<form class="email_holder">-->
+      <mat-form-field class="example-full-width email_holder" color="primary" appearance="outline">
+        <input [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" matInput placeholder="Enter email" value="Sushi" required>
+      </mat-form-field>
+      <!--</form>-->
     </div>
     <div id="backdrop"></div>
-    </div>
+  </div>
 </div>

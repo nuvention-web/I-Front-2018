@@ -45,16 +45,13 @@ export class SurveyComponent implements OnInit, AfterViewInit {
               private elementRef: ElementRef) { }
 
   register(i) {
-    console.log(this.slideIndex);
     if (this.res[this.slideIndex - 1] !== undefined) {
       console.log('not null');
-      console.log(this.res[this.slideIndex - 1]);
       this.res[this.slideIndex - 1] = i;
     } else {
       this.res.push(i);
     }
 
-    console.log(this.res);
     if (this.res.length >= this.questions.length) {
       this.submit(this.res);
     }
@@ -86,7 +83,6 @@ export class SurveyComponent implements OnInit, AfterViewInit {
 
   // Next/previous controls
   plusSlides(n) {
-    console.log(this.res_one);
     this.showSlides(this.slideIndex += n);
   }
 

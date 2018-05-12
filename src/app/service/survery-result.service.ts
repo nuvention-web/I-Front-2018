@@ -8,7 +8,10 @@ import 'rxjs/add/operator/map';
 // import { router } from '../routes';
 import { Router } from '@angular/router';
 
-const perf_back_api = 'http://127.0.0.1:5000/';
+//// change here for local testing
+// const perf_back_api = 'http://127.0.0.1:5000/';
+const perf_back_api = 'http://ec2-18-237-88-77.us-west-2.compute.amazonaws.com/';
+
 
 @Injectable()
 export class SurveyResultService {
@@ -16,6 +19,7 @@ export class SurveyResultService {
   // private _obs_result = new BehaviorSubject<Observable<ScentProfileCard>>(this.card);
   // public readonly survey_result: Observable<ScentProfileCard> = this._obs_result.asObservable();
 
+  public username = '';
 
   public card: ScentProfileCard;
   public perfumes: any[];
@@ -67,24 +71,45 @@ export class SurveyResultService {
     this._card = new BehaviorSubject<ScentProfileCard>(this.card);
     console.log('get_card accessed in service');
 
+    this.username = username;
     const cardAPI = perf_back_api + 'notbought/mode';
     console.log(cardAPI);
     const obs = this.http.post(cardAPI, {
       q1: this.one_options[res_one],
       q2: this.two_options[res_two],
-      // q2: 'Dreamer',
       q3: this.three_options[res_three],
-      // q3: 'Daredevil',
       name: username
     });
     console.log(obs);
     obs.subscribe( (response: Response) => {
       console.log('in subscribe');
       const response_data = response['response']['Cards'];
-      console.log(response_data);
+      // console.log(response_data);
       this._card.next(response_data);
       this.obs_card = this._card.asObservable();
     })
     return this.obs_card;
+  }
+
+  send_result(card_result: any, email: string) {
+    console.log('sending the result of bought to db');
+    const result = card_result;
+    const boughtAPI = perf_back_api + 'bought/mode';
+    const obs = this.http.post(boughtAPI, {
+      q1: result[0].name,
+      q2: result[1].name,
+      q3: result[2].name,
+      name: this.username,
+      email: email,
+    });
+    console.log('after bought api post');
+    console.log(obs);
+    obs.subscribe( (response: Response) => {
+      console.log('in subscribe');
+      const response_data = response['response'];
+      // console.log(response_data);
+    })
+    window.location.href = 'https://www.tryperf.com/shop';
+    return obs;
   }
 }

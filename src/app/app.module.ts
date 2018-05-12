@@ -5,6 +5,8 @@ import { HttpClientModule } from '@angular/common/http';
 
 // Material
 import { MatRadioModule, MatButtonModule } from '@angular/material';
+import { MatInputModule } from '@angular/material/input';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 import { AppComponent } from './app.component';
 import { SurveyModule } from './survey/survey.module';
@@ -33,6 +35,8 @@ import { ResultComponent } from './result/result.component';
     FormsModule,
     HttpClientModule,
     MatButtonModule,
+    MatInputModule,
+    BrowserAnimationsModule,
     SurveyModule,
     routes,
   ],

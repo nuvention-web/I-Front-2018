@@ -63,6 +63,23 @@ hr {
   transition: opacity 1s;
 }
 
+.email_holder {
+  z-index: 30;
+  visibility: hidden;
+  color: white;
+  position: absolute;
+  margin-top: 12rem;
+  margin-left: 3rem;
+}
+
+
+/*.mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {*/
+  /*color: white;*/
+/*}*/
+
+mat-form-field {
+  color: white;
+}
 
 /* for smooth fade-in of the page */
 
