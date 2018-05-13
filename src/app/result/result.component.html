@@ -1,45 +1,23 @@
-<!--<div class="card_container slides fade" *ngFor="let card of result_cards let j = index">-->
-<!--<div class="card" [style.background-image] = " 'url(' + image_URL + ')' ">-->
-<!--<div class="backdrop">-->
-<!--<iframe class="video_container" width="420" height="236" [src] = "video_URL | safe"></iframe>-->
-<!--<h2>{{card.tag1}}</h2>-->
-<!--<hr>-->
-<!--<p>{{card.scent_description}}</p>-->
-<!--</div>-->
-<!--</div>-->
-<!--</div>-->
-
-<div id="container">
-  <div id="identity_box">
-    <h1>You are a</h1>
-    <div id="cardnames">
-      <h2 *ngFor="let card of result_cards">{{card.name + ' & '}}</h2>
-    </div>
-  </div>
-  <div id="mid_section">
-    <button class="prev" (click)="plusSlides(-1)">&#10094;</button>
-    <div id="result_continer" *ngIf="isDataLoaded">
-      <div id="backdrop"></div>
-      <div class="slides" *ngFor="let card of result_cards" let i="index">
-        <div id="text_intro">
-          <h1>{{card.name}}</h1>
-          <hr>
-          <h2>{{card.name}}</h2>
-          <h3>{{card.description || 'no card desc'}}</h3>
-          <button id="purchase_btn" *ngIf="show_purchase" (click)="goto_purchase()">PURCHASE</button>
-        </div>
-        <div class="video_container">
-          <iframe class="frame" frameborder="0" data-autoplay data-keepplaying [src] = "video_URL | safe" ></iframe>
-        </div>
+<!--<link href="node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">-->
+<div id="page">
+  <div id="row_cards">
+    <div class="cards" *ngFor="let card of result_cards let i=index" [attr.id]="'card_' + i"
+         [ngStyle]="{'background-image': 'url(' + card.image_lnk + ')'}">
+      <div [attr.id]="'text_intro_' + i" class="text_intro" (mouseover)="fireEvent($event, i)" (mouseleave)="killEvent($event, i)">
+        <h1 class="card_content" [attr.id]="'card_name_' + i">{{card.name}}</h1>
+        <h4 class="card_content" [attr.id]="'card_desc_' + i"></h4>
+        <hr class="card_content" [attr.id]="'hr_' + i">
       </div>
+      <button class="purchase_btn" (click)="goto_purchase()">PURCHASE</button>
+      <!--<mat-form-field>-->
+      <!--<textarea  class="email_holder"  *ngIf="show_email" matInput placeholder="Leave an email"></textarea>-->
+      <!--</mat-form-field>-->
+      <!--<form class="email_holder">-->
+      <mat-form-field class="example-full-width email_holder" color="primary" appearance="outline">
+        <input [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" matInput placeholder="Enter email" value="Sushi" required>
+      </mat-form-field>
+      <!--</form>-->
     </div>
-    <button class="next" (click)="plusSlides(1)">&#10095;</button>
-  </div>
-  <div class = "dots" style="text-align:center">
-    <span class="dot" (click)="currentSlide(1)"></span>
-    <span class="dot" (click)="currentSlide(2)"></span>
-    <span class="dot" (click)="currentSlide(3)"></span>
+    <div id="backdrop"></div>
   </div>
 </div>
-
-

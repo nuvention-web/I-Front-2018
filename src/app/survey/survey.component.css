@@ -1,6 +1,13 @@
 img {
-  width: 15rem;
-  height: 10rem;
+  width: 14rem;
+  height: 9rem;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+#logo {
+  width: 12rem;
+  height: 12rem;
 }
 
 /* user name */
@@ -11,6 +18,7 @@ img {
   align-content: center;
   /*margin-top: 15rem;*/
   padding-top: 12rem;
+  margin: auto;
 
   /* center up the view port*/
   /*width: 50%;*/
@@ -24,7 +32,6 @@ img {
 #user_name, #ok-btn {
   border: none;
   border-bottom: 2px solid red;
-  background-color: floralwhite;
   outline: none;
 }
 
@@ -38,8 +45,12 @@ img {
   justify-content: inherit;
 }
 
+#user_questions h2, #name_container h2 {
+  font-weight: lighter;
+  font-size: xx-large;
+}
+
 #ok-btn {
-  background-color: floralwhite;
   border: 1px solid darkslategray;
   width: 1.5rem;
   height: 1.5rem;
@@ -55,6 +66,11 @@ img {
   padding-top: 3rem;
   justify-content: center;
   margin-bottom: 4rem;
+}
+
+#customer_info h1 {
+  font-size: xx-large;
+  font-weight: lighter;
 }
 
 #customer_info h1, h4 {
@@ -92,13 +108,17 @@ img {
 }
 
 .mat-button {
-  background-color: navajowhite;
+  border: 0.5px solid lightgoldenrodyellow;
+  background-color: rgba(255,227,244, 0.4);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   width: 15rem;
-  padding: 0px 0px;
+  /*padding: 0px 0px;*/
+  padding: 0.5rem 0.5rem;
   max-width: inherit;
   white-space: pre-wrap;
+  border-radius: 5px;
 
   margin:0 0.25rem;
   line-height: 0;
@@ -149,7 +169,7 @@ button:focus {
 }
 
 .active, .dot:hover {
-  background-color: orange;
+  background-color: rgb(255,227,244);
 }
 
 /* Fading animation */
