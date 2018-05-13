@@ -29,10 +29,15 @@ img {
   /*z-index: 999;*/
 }
 
-#user_name, #ok-btn {
+#user_name {
   border: none;
-  border-bottom: 2px solid red;
+  border-bottom: 2px solid papayawhip;
   outline: none;
+}
+
+#ok-btn {
+  border: 1px solid papayawhip;
+  background-color: transparent;
 }
 
 .user_name:focus {
@@ -100,7 +105,7 @@ img {
 
 /* button */
 
-.option-btn-row {
+.option-btn-container, .option-btn-row {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -188,4 +193,35 @@ button:focus {
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+
+/* Media Rules */
+@media screen and (max-width: 850px) {
+  .option-btn-row {
+    diplay: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    /*flex-direction: column;*/
+  }
+
+  #ok-btn {
+    border: 1px solid papayawhip;
+    background-color: transparent;
+  }
+
+  img {
+    width: 90%;
+    height: 5rem;
+  }
+
+  .desc {
+    font-size: xx-small;
+  }
+
+  .mat-button {
+    width: 47%;
+    height: 11rem;
+    margin-bottom: 1%;
+  }
 }
