@@ -32,13 +32,21 @@ export class SurveyComponent implements OnInit, AfterViewInit {
   // questions
   questions = ['How would you want to spend your vacation?',
               'Who are you at a party?',
-              'How do you want others to remember you?'];
+              'How do you want others to remember you?',
+              'Time machine was just release. When would you go?',
+              'What is your ideal night out?',
+              'What is your style?'];
+
 
   option_one = ['Enjoying a fruity drink and an ocean breeze', 'Walking through a serene garden in full bloom',
     'Tasting exotic cuisines and decadent desserts', 'Adventuring off the grid and deep into nature'];
   option_two = ['Fly on the wall', 'The life of the party', 'Deep converser', 'Nah, I\'d stay at home'];
   option_three = ['Nice and Friendly', 'Intelligent and wise', 'Achiever', 'Mediator'];
-  options = [this.option_one, this.option_two, this.option_three];
+  option_four = ['90s', '2000s', '2010s', 'Just stay where I am'];
+  option_five = ['Clubbing', 'Kickback', 'Night in', 'Dinner and movie'];
+  // option_six = ['Work or school', 'Formal event', 'Casual outing', 'Chillin\''];
+  option_seven = ['Simple and classic', 'Trendy and hipster', 'Casual and comfortable', 'Dress to impress'];
+  options = [this.option_one, this.option_two, this.option_three, this.option_four, this.option_five, this.option_seven];
 
   constructor(public router: Router,
               public surResult: SurveyResultService,
