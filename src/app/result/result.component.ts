@@ -16,6 +16,7 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
 
   isDataLoaded = false;
   show_email = false;
+  media_purchase = false;
   public user_email = '';
   button_checker = [false, false, false];
   public show_purchase = false;
@@ -43,7 +44,6 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
       // window.location.href = 'https://www.tryperf.com/shop';
     } else {
       this.show_email = true;
-      console.log(this.show_email);
     }
   }
 
@@ -77,18 +77,41 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
         (texts[j] as HTMLElement).style.opacity = '1';
       }
     }
+
+    // if (this.button_checker[0] && this.button_checker[1] && this.button_checker[2] && document.body.style.width < '850px') {
+    //   this.media_purchase = true;
+    //   console.log('media_purchase true');
+    //   document.getElementById('media_btn_grp').style.visibility = 'visible';
+    //   document.getElementById('media_purchase_btn').style.visibility = 'visible';
+    //   document.getElementById('media_email_field').style.visibility = 'visible';
+    // }
+
     if (this.button_checker[0] && this.button_checker[1] && this.button_checker[2]) {
       const p_btns = document.getElementsByClassName('purchase_btn');
       (p_btns[2] as HTMLElement).style.opacity = '1';
       (p_btns[2] as HTMLElement).style.visibility = 'visible';
-      // this.show_purchase = true;
 
-      if (this.show_email === true) {
-        const email_input = document.getElementsByClassName('email_holder');
-        (email_input[2] as HTMLElement).style.opacity = '1';
-        (email_input[2] as HTMLElement).style.visibility = 'visible';
-      }
+      const email_input = document.getElementsByClassName('email_holder');
+      (email_input[2] as HTMLElement).style.opacity = '1';
+      (email_input[2] as HTMLElement).style.visibility = 'visible';
+      this.show_purchase = true;
+
+      // if (this.show_email === true) {
+      //   const email_input = document.getElementsByClassName('email_holder');
+      //   (email_input[2] as HTMLElement).style.opacity = '1';
+      //   (email_input[2] as HTMLElement).style.visibility = 'visible';
+      // }
     }
+
+    if (document.getElementById('purchase_btn_grp') !== null) {
+      console.log('this is logged');
+      document.getElementById('purchase_btn').scrollIntoView({
+        behavior: 'smooth',
+        block: 'center',
+        inline: 'nearest'
+      });
+    }
+
   }
 
   fireEvent(e, i: number) {

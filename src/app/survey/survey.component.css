@@ -94,7 +94,7 @@ img {
 
 #survey_container {
   margin-top: 40rem;
-  margin-bottom: auto;
+  /*margin-bottom: 10rem;*/
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -108,7 +108,7 @@ img {
 .option-btn-container, .option-btn-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-item: center;
 }
 
@@ -201,8 +201,12 @@ button:focus {
   .option-btn-row {
     diplay: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    /*flex-direction: column;*/
+    justify-content: space-evenly;
+  }
+
+  .option-btn-container {
+    margin-left: 1%;
+    margin-right: 1%;
   }
 
   #ok-btn {
@@ -216,12 +220,25 @@ button:focus {
   }
 
   .desc {
-    font-size: xx-small;
+    font-size: small;
+    font-weight: normal;
   }
 
   .mat-button {
-    width: 47%;
+    width: 46%;
     height: 11rem;
     margin-bottom: 1%;
+  }
+
+  #user_questions {
+    margin-top: -4rem;
+  }
+
+  #user_questions h2 {
+    font-size: medium;
+  }
+
+  #survey_container {
+    margin-bottom: -10rem;
   }
 }

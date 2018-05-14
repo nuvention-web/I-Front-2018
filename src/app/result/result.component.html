@@ -1,18 +1,25 @@
-<!--<link href="node_modules/@angular/material/prebuilt-themes/indigo-pink.css" rel="stylesheet">-->
 <div id="page">
   <div id="row_cards">
     <div class="cards" *ngFor="let card of result_cards let i=index" [attr.id]="'card_' + i"
          [ngStyle]="{'background-image': 'url(' + card.image_lnk + ')'}">
       <div [attr.id]="'text_intro_' + i" class="text_intro" (mouseover)="fireEvent($event, i)" (mouseleave)="killEvent($event, i)">
         <h1 class="card_content" [attr.id]="'card_name_' + i">{{card.name}}</h1>
-        <h4 class="card_content" [attr.id]="'card_desc_' + i"></h4>
+        <h4 class="card_content card_desc" [attr.id]="'card_desc_' + i"></h4>
         <hr class="card_content" [attr.id]="'hr_' + i">
       </div>
       <button class="purchase_btn" (click)="goto_purchase()">PURCHASE</button>
-      <mat-form-field class="example-full-width email_holder" color="primary" appearance="outline">
-        <input [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" matInput placeholder="Enter email" value="Sushi" required>
-      </mat-form-field>
+      <input  class="email_holder" [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" placeholder="Enter email" required autofocus>
+      <!--<mat-form-field [color]="" class="email_holder">-->
+        <!--<input matInput [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" placeholder="Email" required autofocus>-->
+      <!--</mat-form-field>-->
     </div>
-    <div id="backdrop"></div>
+    <!--<div id="backdrop"></div>-->
   </div>
+  <!--<div id="media_btn_grp">-->
+    <!--<button id="media_purchase_btn" (click)="goto_purchase()">PURCHASE</button>-->
+    <!--<mat-form-field id="media_email_field" color="primary" appearance="outline">-->
+      <!--<input [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" matInput placeholder="Enter email" value="Sushi" required>-->
+    <!--</mat-form-field>-->
+  <!--</div>-->
+  <div id="backdrop"></div>
 </div>

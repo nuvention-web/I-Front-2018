@@ -6,5 +6,10 @@ html, body {
   min-height: 100%;
   /*font-family: monaco,Consolas,"Lucida Console",monospace*/
   /*font-family: "Arial Black","Arial Bold",Gadget,sans-serif;*/
-  font-family: "Montserrat",sans-serif
+  font-family: "Montserrat",sans-serif;
+  margin: 0;
+}
+
+#content {
+  -webkit-transform: translate3d(0,0,0);
 }
