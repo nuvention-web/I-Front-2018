@@ -1,4 +1,4 @@
-import {AfterContentChecked, AfterViewInit, Component, OnChanges, OnInit} from '@angular/core';
+import {AfterContentChecked, AfterViewInit, Component, OnChanges, OnInit, Renderer2, ElementRef,} from '@angular/core';
 import { SurveyResultService } from '../service/survery-result.service';
 
 
@@ -15,9 +15,9 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   // See comment by 'phpony'
 
   isDataLoaded = false;
-  show_email = false;
+  // show_email = false;
   media_purchase = false;
-  public user_email = '';
+  public user_email = 'Enter your email';
   button_checker = [false, false, false];
   public show_purchase = false;
   public card: any;
@@ -26,8 +26,11 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   public result_cards = [];
   window_width: number;
   window_height: number;
+  public name: string;
 
-  constructor(public surService: SurveyResultService) { }
+  constructor(public surService: SurveyResultService,
+              public render: Renderer2,
+              public el: ElementRef) { }
 
   // modify youtube url string to autoplay at given time without control display
   set_youtube_url(url) {
@@ -39,12 +42,24 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   }
 
   goto_purchase() {
-    if (this.show_email === true && this.user_email !== '') {
+    if (this.user_email !== 'Enter your email') {
       this.surService.send_result(this.result_cards, this.user_email);
       // window.location.href = 'https://www.tryperf.com/shop';
-    } else {
-      this.show_email = true;
     }
+  }
+
+  toThirdPage() {
+    const distill_first = document.getElementById('distill_first');
+    const item_display = document.getElementById('item_display');
+    distill_first.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+
+    setTimeout(function() {
+      distill_first.style.opacity = '0';
+      item_display.style.opacity = '1';
+    }, 2500);
   }
 
   ngOnChanges() {
@@ -55,7 +70,10 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   // ngAfterContentChecked()
 
   ngAfterContentChecked() {
-    console.log('result page oninit');
+    this.window_width = window.innerWidth;
+    this.window_height = window.innerHeight;
+
+    // console.log('result page oninit');
     this.surService._card.subscribe((val) => {
       if (val) {
         this.isDataLoaded = true;
@@ -78,40 +96,11 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
       }
     }
 
-    // if (this.button_checker[0] && this.button_checker[1] && this.button_checker[2] && document.body.style.width < '850px') {
-    //   this.media_purchase = true;
-    //   console.log('media_purchase true');
-    //   document.getElementById('media_btn_grp').style.visibility = 'visible';
-    //   document.getElementById('media_purchase_btn').style.visibility = 'visible';
-    //   document.getElementById('media_email_field').style.visibility = 'visible';
-    // }
-
+    //// hidden button display
     if (this.button_checker[0] && this.button_checker[1] && this.button_checker[2]) {
-      const p_btns = document.getElementsByClassName('purchase_btn');
-      (p_btns[2] as HTMLElement).style.opacity = '1';
-      (p_btns[2] as HTMLElement).style.visibility = 'visible';
-
-      const email_input = document.getElementsByClassName('email_holder');
-      (email_input[2] as HTMLElement).style.opacity = '1';
-      (email_input[2] as HTMLElement).style.visibility = 'visible';
-      this.show_purchase = true;
-
-      // if (this.show_email === true) {
-      //   const email_input = document.getElementsByClassName('email_holder');
-      //   (email_input[2] as HTMLElement).style.opacity = '1';
-      //   (email_input[2] as HTMLElement).style.visibility = 'visible';
-      // }
+      const make_btns = document.getElementsByClassName('arrow_wrapper');
+      (make_btns[1] as HTMLElement).style.opacity = '1';
     }
-
-    if (document.getElementById('purchase_btn_grp') !== null) {
-      console.log('this is logged');
-      document.getElementById('purchase_btn').scrollIntoView({
-        behavior: 'smooth',
-        block: 'center',
-        inline: 'nearest'
-      });
-    }
-
   }
 
   fireEvent(e, i: number) {
@@ -131,16 +120,43 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     document.getElementById('card_desc_' + i).innerHTML = '';
   }
 
+  scroll_to(div: string) {
+    const target_div = document.getElementById(div);
+    target_div.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
 
   ngAfterViewInit() {
-
+    setTimeout(function() {
+      const target_div = document.getElementById('row_cards');
+      target_div.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start',
+      });
+    }, 2500);
   }
 
   ngOnInit() {
     this.window_width = window.innerWidth;
     this.window_height = window.innerHeight;
 
-    // document.getElementById('row_cards').style.opacity = '0';
-    // document.getElementById('row_cards').style.opacity = '1';
+    this.name = this.surService.get_username();
+
+    const first_page = document.getElementById('first_page');
+    const first_page_text = document.getElementById('first_page_text')
+    const second_page = document.getElementById('second_page');
+    const third_page = document.getElementById('third_page');
+    first_page_text.style.opacity = '1';
+    first_page.scrollIntoView();
+    // first_page.scrollTop = first_page.scrollHeight;
+
+    this.render.setStyle(first_page, 'padding-top', (this.window_height / 3).toString() + 'px' );
+    this.render.setStyle(first_page, 'padding-bottom', (this.window_height).toString() + 'px' );
+    this.render.setStyle(third_page, 'padding-top', (this.window_height / 3).toString() + 'px' );
+    this.render.setStyle(third_page, 'padding-bottom', (this.window_height).toString() + 'px' );
+    this.render.setStyle(second_page, 'padding-top', (this.window_height / 5).toString() + 'px' );
+    this.render.setStyle(second_page, 'padding-bottom', (this.window_height / 2).toString() + 'px' );
   }
 }

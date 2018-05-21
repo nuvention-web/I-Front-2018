@@ -3,20 +3,126 @@ body {
   overflow: hidden;
   margin-left: 0px;
   margin-top: 0px;
+  opacity: 1;
+  transition: 1s opacity;
+}
+
+body.fade-out {
+  opacity: 0;
+  transition: none;
 }
 
 html {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-#page {
+#first_page, #second_page, #third_page, #id_left, #id_right, #distill_first, #item_display {
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
+#first_page_text {
+  opacity: 0;
+  transition: opacity 10s;
+}
+
+#distill_first {
+  position: absolute;
+  z-index: 1;
+  transition: opacity 2s;
+  /*display: flex;*/
+  /*flex-direction: column;*/
+  /*justify-content: center;*/
+  text-align: center;
+  font-size: large;
+}
+
+#item_display {
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 2s;
+
+  width: 100vw;
+  height: 100vh;
+  flex-direction: row;
+  /*justify-content: space-evenly;*/
+  /*align-items: center;*/
+}
+
+#id_right {
+  line-height: 3rem;
+  width: 25vw;
+  justify-content: left;
+}
+
+/deep/ .mat-input-underline {
+  background-color: #FF0000;    /* replace this color with your accent color hex code */
+}
+
+input.mat-input-element {
+  color: darkslategray;
+}
+
+input.mat-input-element::placeholder {
+  color: darkslategray;
+}
+
+#id_left {
+  width: 25vw;
+  justify-content: right;
+}
+
+#bottle_img {
+  width: 25rem;
+  height: 25rem;
+}
+
+/* Arrow start */
+.arrow_wrapper {
+  font-family: inherit;
+  font-size: medium;
+  font-weight: lighter;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: orange;
+  color: whitesmoke;
+  border: yellow;
+  font-size: small;
+  margin-bottom: 3rem;
+  width: 50%;
+  height:10%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+
+  /*visibility: hidden;*/
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+#down_arrow {
+  /*color: #FFE3F4;*/
+  font-size: large;
+  color: pink;
+  margin-left: -1.5rem;
+  margin-right: 0.5rem;
+}
+/* Arrow end */
+
 #row_cards {
+  position: absolute;
   display: flex;
   flex-direction: row;
   transition: opacity 1s ease-in-out 0.3s;
+  margin: inherit;
 }
 
 .cards {
@@ -41,6 +147,8 @@ html {
   text-align: center;
   color: whitesmoke;
   margin-top: 15%;
+  width: 80%;
+  height: 100%;
 }
 
 #backdrop {
@@ -49,6 +157,7 @@ html {
   background-color: rgba(0, 0, 0, 0.4);
   width: 100vw;
   height: 98vh;
+  margin: inherit;
 }
 
 hr {
@@ -61,40 +170,30 @@ hr {
 }
 
 .purchase_btn {
-  margin-top: 17rem;
-  margin-left: 3rem;
-  position: absolute;
-
-  visibility: hidden;
-  z-index: 20;
-
   width: 11rem;
   height: 4rem;
   background-color: orange;
   color: whitesmoke;
   border-radius: 3px;
   border: yellow;
+  font-size: small;
 
   transition: opacity 1s;
 }
 
 .email_holder {
-  z-index: 30;
-  visibility: hidden;
-  position: absolute;
-  margin-top: 12rem;
-  margin-left: 2.5rem;
+  /*z-index: 30;*/
   background-color: transparent;
   border: none;
   outline: none;
-  color: papayawhip;
+  color: black;
   border-bottom: 2px solid papayawhip;
   font-size: large;
-  width: 15%;
+  width: 100%;
 }
 
 input::placeholder { /* Chrome/Opera/Safari */
-  color: papayawhip;
+  color: black;
 }
 
 #media_btn {
@@ -146,21 +245,6 @@ mat-form-field {
     height: 100vh;
   }
 
-  .email_holder {
-    margin-top: 10rem;
-    margin-left: 0rem;
-    z-index: 20;
-    /*margin-right: 3rem;*/
-  }
-
-  .purchase_btn {
-    margin-top: 14rem;
-    margin-left: 0rem;
-    margin-bottom: 3rem;
-    /*margin-right: 3rem;*/
-    background-color: rgba(255,165,0, 0.4);
-  }
-
   .card_desc {
     margin-bottom: 3rem;
   }
@@ -185,25 +269,13 @@ mat-form-field {
     padding: 2.5rem 2.5rem;
   }
 
-  #media_btn_grp {
-    display: flex;
-    flex-direction: row;
-    /*justify-content: center;*/
-    margin-top: -12rem;
-    /*margin-left: 7rem;*/
-  }
-
-  .email_holder {
-    margin-top: 9rem;
-    margin-left: -5rem;
-    z-index: 20;
-    width: 30%;
-    /*margin-right: 3rem;*/
-  }
-
   /* When the input is not focused */
   /deep/ .mat-input-underline {
     background-color: #FF0000;    /* replace this color with your accent color hex code */
+  }
+
+  /deep/ .mat-input-element {
+    color: red;
   }
 
   mat-input-container {
@@ -212,15 +284,6 @@ mat-form-field {
 
   .mat-input-wrapper {
     background: gray;
-  }
-
-  .purchase_btn {
-    width: 7rem;
-    height: 3rem;
-    margin-top: 9rem;
-    margin-left: 6rem;
-    margin-bottom: 1rem;
-    background-color: rgba(255,165,0, 0.4);
   }
 
   .mat-form-field-underline.mat-disabled {

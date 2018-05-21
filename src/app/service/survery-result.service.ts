@@ -9,15 +9,15 @@ import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
 
 //// change here for local testing
-// const perf_back_api = 'http://127.0.0.1:5000/';
-const perf_back_api = 'http://ec2-18-237-88-77.us-west-2.compute.amazonaws.com/';
+const perf_back_api = 'http://127.0.0.1:5000/';
+// const perf_back_api = 'http://ec2-18-237-88-77.us-west-2.compute.amazonaws.com/';
 
 
 
 @Injectable()
 export class SurveyResultService {
   // public card: Observable<ScentProfileCard>;
-  // private _obs_result = new BehaviorSubject<Observable<ScentProfileCard>>(this.card);
+  // private _obs_result = new BehaviorSuject<Observable<ScentProfileCard>>(this.card);
   // public readonly survey_result: Observable<ScentProfileCard> = this._obs_result.asObservable();
 
   public username = '';
@@ -42,6 +42,10 @@ export class SurveyResultService {
 
   get_result() {
     return this.obs_card;
+  }
+
+  get_username() {
+    return this.username;
   }
 
   // // old get_card -- for testing
@@ -70,20 +74,18 @@ export class SurveyResultService {
   // new get_card
   get_card(res_one: number, res_two: number, res_three: number, username: string): Observable<any> {
     this._card = new BehaviorSubject<ScentProfileCard>(this.card);
-    console.log('get_card accessed in service');
+    // console.log('get_card accessed in service');
 
     this.username = username;
     const cardAPI = perf_back_api + 'notbought/mode';
-    console.log(cardAPI);
     const obs = this.http.post(cardAPI, {
       q1: this.one_options[res_one],
       q2: this.two_options[res_two],
       q3: this.three_options[res_three],
       name: username
     });
-    console.log(obs);
     obs.subscribe( (response: Response) => {
-      console.log('in subscribe');
+      // console.log('in subscribe');
       const response_data = response['response']['Cards'];
       // console.log(response_data);
       this._card.next(response_data);
@@ -103,10 +105,7 @@ export class SurveyResultService {
       name: this.username,
       email: email,
     });
-    console.log('after bought api post');
-    console.log(obs);
     obs.subscribe( (response: Response) => {
-      console.log('in subscribe');
       const response_data = response['response'];
       // console.log(response_data);
     })

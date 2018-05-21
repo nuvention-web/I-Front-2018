@@ -1,25 +1,46 @@
-<div id="page">
+<div id="first_page">
+  <h1 id="first_page_text">Hey {{name}}</h1>
+  <hr [ngStyle] = "{'width':'40%'}">
+  <h1>We think these personalities are good fits for you</h1>
+  <button (click)="toThirdPage()"></button>
+</div>
+
+<div id="third_page">
   <div id="row_cards">
-    <div class="cards" *ngFor="let card of result_cards let i=index" [attr.id]="'card_' + i"
+    <div class="cards" *ngFor="let card of result_cards let i=index" [attr.id]="'card_' + i" (mouseover)="fireEvent($event, i)" (mouseleave)="killEvent($event, i)"
          [ngStyle]="{'background-image': 'url(' + card.image_lnk + ')'}">
-      <div [attr.id]="'text_intro_' + i" class="text_intro" (mouseover)="fireEvent($event, i)" (mouseleave)="killEvent($event, i)">
-        <h1 class="card_content" [attr.id]="'card_name_' + i">{{card.name}}</h1>
+      <div [attr.id]="'text_intro_' + i" class="text_intro">
+        <h1 class="card_content" [attr.id]="'card_name_' + i"> {{card.name}} </h1>
         <h4 class="card_content card_desc" [attr.id]="'card_desc_' + i"></h4>
         <hr class="card_content" [attr.id]="'hr_' + i">
       </div>
-      <button class="purchase_btn" (click)="goto_purchase()">PURCHASE</button>
-      <input  class="email_holder" [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" placeholder="Enter email" required autofocus>
-      <!--<mat-form-field [color]="" class="email_holder">-->
-        <!--<input matInput [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" placeholder="Email" required autofocus>-->
-      <!--</mat-form-field>-->
+      <!--<button id="arrow_wrapper">Make your fragrance<i id="down_arrow" class="material-icons">arrow_downward</i></button>-->
+      <button class="arrow_wrapper" (click)="toThirdPage()">Make your fragrance</button>
+      <!--<button class="purchase_btn" (click)="goto_purchase()">Go to purchase page</button>-->
+      <!--<input class="email_holder" [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" placeholder="Enter email" required autofocus>-->
     </div>
-    <!--<div id="backdrop"></div>-->
   </div>
-  <!--<div id="media_btn_grp">-->
-    <!--<button id="media_purchase_btn" (click)="goto_purchase()">PURCHASE</button>-->
-    <!--<mat-form-field id="media_email_field" color="primary" appearance="outline">-->
-      <!--<input [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" matInput placeholder="Enter email" value="Sushi" required>-->
-    <!--</mat-form-field>-->
-  <!--</div>-->
   <div id="backdrop"></div>
+</div>
+
+<div id="second_page">
+  <div id="distill_first">
+    <img id="distill" src="../assets/img_survey_host/result/distill.gif">
+    <hr>
+    <h4>Distilling a perf scent for you now..!</h4>
+  </div>
+  <div id="item_display">
+    <div id="id_left">
+      <img id="bottle_img" src="../assets/img_survey_host/result/25ml.png">
+    </div>
+    <div id="id_right">
+      <h1>You are a..</h1>
+      <h2 *ngFor="let card of result_cards"> {{card.name}} </h2>
+      <!--<input class="email_holder" [(ngModel)]="user_email" [ngModelOptions]="{standalone: true}" placeholder="Enter email" required autofocus>-->
+      <mat-form-field class="example-full-width">
+        <input matInput [(ngModel)]="user_email" value="Enter your email" onfocus="if(this.value  === 'Enter your email') { this.value = ''; } " onblur="if(this.value === '') { this.value = 'Enter your email'; } ">
+      </mat-form-field>
+      <button class="purchase_btn" (click)="goto_purchase()">Purchase or <br> get a free card sample</button>
+    </div>
+  </div>
 </div>
