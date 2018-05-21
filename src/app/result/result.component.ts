@@ -1,6 +1,7 @@
 import {AfterContentChecked, AfterViewInit, Component, OnChanges, OnInit, Renderer2, ElementRef,} from '@angular/core';
 import { SurveyResultService } from '../service/survery-result.service';
-
+import { ResponseForm } from '../model/response-form';
+import {FormControl, Validators} from '@angular/forms';
 
 @Component({
   selector: 'app-result',
@@ -8,16 +9,14 @@ import { SurveyResultService } from '../service/survery-result.service';
   styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit, AfterContentChecked, AfterViewInit, OnChanges {
+  emailFormControl = new FormControl('', [
+    Validators.required,
+    Validators.email,
+  ]);
 
-  // Note:
-  // Issue with X-XSS-Protection on youtube video
-  // related Gitissue: https://github.com/CookPete/react-player/issues/288
-  // See comment by 'phpony'
-
+  private input: any;
   isDataLoaded = false;
-  // show_email = false;
-  media_purchase = false;
-  public user_email = 'Enter your email';
+  public user_email = '';
   button_checker = [false, false, false];
   public show_purchase = false;
   public card: any;
@@ -42,9 +41,8 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   }
 
   goto_purchase() {
-    if (this.user_email !== 'Enter your email') {
+    if (this.user_email !== '') {
       this.surService.send_result(this.result_cards, this.user_email);
-      // window.location.href = 'https://www.tryperf.com/shop';
     }
   }
 
@@ -62,14 +60,43 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     }, 2500);
   }
 
+  fireEvent(e, i: number) {
+    document.getElementById('hr_' + i).style.opacity = '0';
+    document.getElementById('card_name_' + i).style.opacity = '0';
+    document.getElementById('card_name_' + i).innerHTML = '';
+    document.getElementById('card_desc_' + i).style.opacity = '1';
+    document.getElementById('card_desc_' + i).innerHTML = this.result_cards[i].description.split('/')[0];
+    document.getElementById('card_desc_italicize_' + i).style.opacity = '1';
+    document.getElementById('card_desc_italicize_' + i).innerHTML = this.result_cards[i].description.split('/')[1];
+    this.button_checker[i] = true;
+  }
+
+  killEvent(e, i: number) {
+    document.getElementById('hr_' + i).style.opacity = '1';
+    document.getElementById('card_name_' + i).style.opacity = '1';
+    document.getElementById('card_name_' + i).innerHTML = this.result_cards[i].name;
+    document.getElementById('card_desc_' + i).style.opacity = '0';
+    document.getElementById('card_desc_' + i).innerHTML = '';
+    document.getElementById('card_desc_italicize_' + i).style.opacity = '0';
+    document.getElementById('card_desc_italicize_' + i).innerHTML = '';
+  }
+
+  scroll_to(div: string) {
+    const target_div = document.getElementById(div);
+    target_div.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start',
+    });
+  }
   ngOnChanges() {
   }
 
   // when a scent profile card is made
   // get the profile card from the service onInit
   // ngAfterContentChecked()
-
   ngAfterContentChecked() {
+    this.input = document.getElementById('email_area');
+
     this.window_width = window.innerWidth;
     this.window_height = window.innerHeight;
 
@@ -103,35 +130,6 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     }
   }
 
-  fireEvent(e, i: number) {
-    document.getElementById('hr_' + i).style.opacity = '0';
-    document.getElementById('card_name_' + i).style.opacity = '0';
-    document.getElementById('card_name_' + i).innerHTML = '';
-    document.getElementById('card_desc_' + i).style.opacity = '1';
-    document.getElementById('card_desc_' + i).innerHTML = this.result_cards[i].description.split('/')[0];
-    document.getElementById('card_desc_italicize_' + i).style.opacity = '1';
-    document.getElementById('card_desc_italicize_' + i).innerHTML = this.result_cards[i].description.split('/')[1];
-    this.button_checker[i] = true;
-  }
-
-  killEvent(e, i: number) {
-    document.getElementById('hr_' + i).style.opacity = '1';
-    document.getElementById('card_name_' + i).style.opacity = '1';
-    document.getElementById('card_name_' + i).innerHTML = this.result_cards[i].name;
-    document.getElementById('card_desc_' + i).style.opacity = '0';
-    document.getElementById('card_desc_' + i).innerHTML = '';
-    document.getElementById('card_desc_italicize_' + i).style.opacity = '0';
-    document.getElementById('card_desc_italicize_' + i).innerHTML = '';
-  }
-
-  scroll_to(div: string) {
-    const target_div = document.getElementById(div);
-    target_div.scrollIntoView({
-      behavior: 'smooth',
-      block: 'start',
-    });
-  }
-
   ngAfterViewInit() {
     setTimeout(function() {
       const target_div = document.getElementById('row_cards');
@@ -140,11 +138,19 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
         block: 'start',
       });
     }, 2500);
+
+    this.input.addEventListener('keyup', function(event) {
+      event.preventDefault();
+      if (event.keyCode === 13) {
+        document.getElementById('purchase_btn').click();
+      }
+    });
   }
 
   ngOnInit() {
     this.window_width = window.innerWidth;
     this.window_height = window.innerHeight;
+
 
     this.name = this.surService.get_username();
 

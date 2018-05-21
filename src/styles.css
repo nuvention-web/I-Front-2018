@@ -11,6 +11,10 @@ html, body, h1, h2, h4, p {
   margin: 0;
 }
 
+body {
+  overflow: hidden;
+}
+
 #content {
   -webkit-transform: translate3d(0,0,0);
 }

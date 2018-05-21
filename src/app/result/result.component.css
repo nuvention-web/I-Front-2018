@@ -169,12 +169,15 @@ hr {
   transition: opacity 0.5s ease-in-out 0.2s;
 }
 
+.card_desc {
+  font-size: large;
+}
 
 .card_desc_italicize {
   font-style: italic;
 }
 
-.purchase_btn {
+#purchase_btn {
   width: 11rem;
   height: 4rem;
   background-color: orange;
@@ -186,19 +189,17 @@ hr {
   transition: opacity 1s;
 }
 
-.email_holder {
-  /*z-index: 30;*/
-  background-color: transparent;
-  border: none;
-  outline: none;
-  color: black;
-  border-bottom: 2px solid papayawhip;
-  font-size: large;
-  width: 100%;
-}
-
 input::placeholder { /* Chrome/Opera/Safari */
   color: black;
+  -webkit-text-fill-color: darkslategray;
+}
+
+intput.mat-input-element {
+  -webkit-text-fill-color: darkslategray;
+}
+
+#email_area {
+  -webkit-text-fill-color: darkslategray;
 }
 
 #media_btn {
@@ -206,16 +207,9 @@ input::placeholder { /* Chrome/Opera/Safari */
 }
 
 
-/*.mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {*/
-  /*color: white;*/
-/*}*/
-
 mat-form-field {
   color: white;
 }
-
-
-
 
 /* Media Rules */
 @media screen and (max-width: 850px) {
@@ -276,7 +270,7 @@ mat-form-field {
 
   /* When the input is not focused */
   /deep/ .mat-input-underline {
-    background-color: #FF0000;    /* replace this color with your accent color hex code */
+    background-color: #FF0000;
   }
 
   /deep/ .mat-input-element {
@@ -284,7 +278,7 @@ mat-form-field {
   }
 
   mat-input-container {
-    background-color: #FF0000;    /* replace this color with your accent color hex code */
+    background-color: #FF0000;
   }
 
   .mat-input-wrapper {

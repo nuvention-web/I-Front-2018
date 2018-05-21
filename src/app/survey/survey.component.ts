@@ -41,7 +41,7 @@ export class SurveyComponent implements OnInit, AfterViewInit {
   option_one = ['Enjoying a fruity drink and an ocean breeze', 'Walking through a serene garden in full bloom',
     'Tasting exotic cuisines and decadent desserts', 'Adventuring off the grid and deep into nature'];
   option_two = ['Fly on the wall', 'The life of the party', 'Deep converser', 'Nah, I\'d stay at home'];
-  option_three = ['Nice and erriendly', 'Intelligent and wise', 'Candid and open', 'Warm and caring'];
+  option_three = ['Nice and fiendly', 'Intelligent and wise', 'Candid and open', 'Warm and caring'];
   option_four = ['90s', '2000s', '2010s', 'Just stay where I am'];
   option_five = ['Clubbing', 'Kickback', 'Night in', 'Dinner and movie'];
   // option_six = ['Work or school', 'Formal event', 'Casual outing', 'Chillin\''];
@@ -140,10 +140,9 @@ export class SurveyComponent implements OnInit, AfterViewInit {
     let height = window.innerHeight;
     document.getElementById('survey_container').style.marginBottom = width / 60 + 'rem';
 
-    document.getElementById('name_container').scrollIntoView({
+    document.getElementById('logo').scrollIntoView({
       behavior: 'smooth',
       block: 'center',
-      inline: 'nearest'
     });
   }
 
