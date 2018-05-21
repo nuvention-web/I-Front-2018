@@ -169,6 +169,11 @@ hr {
   transition: opacity 0.5s ease-in-out 0.2s;
 }
 
+
+.card_desc_italicize {
+  font-style: italic;
+}
+
 .purchase_btn {
   width: 11rem;
   height: 4rem;

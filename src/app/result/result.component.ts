@@ -108,7 +108,9 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     document.getElementById('card_name_' + i).style.opacity = '0';
     document.getElementById('card_name_' + i).innerHTML = '';
     document.getElementById('card_desc_' + i).style.opacity = '1';
-    document.getElementById('card_desc_' + i).innerHTML = this.result_cards[i].description;
+    document.getElementById('card_desc_' + i).innerHTML = this.result_cards[i].description.split('/')[0];
+    document.getElementById('card_desc_italicize_' + i).style.opacity = '1';
+    document.getElementById('card_desc_italicize_' + i).innerHTML = this.result_cards[i].description.split('/')[1];
     this.button_checker[i] = true;
   }
 
@@ -118,6 +120,8 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     document.getElementById('card_name_' + i).innerHTML = this.result_cards[i].name;
     document.getElementById('card_desc_' + i).style.opacity = '0';
     document.getElementById('card_desc_' + i).innerHTML = '';
+    document.getElementById('card_desc_italicize_' + i).style.opacity = '0';
+    document.getElementById('card_desc_italicize_' + i).innerHTML = '';
   }
 
   scroll_to(div: string) {
