@@ -43,6 +43,8 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
   goto_purchase() {
     if (this.user_email !== '') {
       this.surService.send_result(this.result_cards, this.user_email);
+    } else {
+      document.getElementById('email_area').focus();
     }
   }
 
