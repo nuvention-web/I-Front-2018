@@ -8,6 +8,7 @@ import { MatRadioModule, MatButtonModule } from '@angular/material';
 import { MatInputModule } from '@angular/material/input';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
+// component
 import { AppComponent } from './app.component';
 import { SurveyModule } from './survey/survey.module';
 import { ProfileCardComponent } from './result-page/profile-card/profile-card.component';

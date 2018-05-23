@@ -1,23 +1,6 @@
-
-<!-------------------------------------------------------------------------------------------------------------------->
-<!--<div class="intro_container">-->
-  <!--<h3> What is your name?</h3>-->
-  <!--<form class="example-form">-->
-    <!--<mat-form-field class="example-full-width">-->
-      <!--<input matInput placeholder="Email" [formControl]="emailFormControl">-->
-      <!--<mat-error *ngIf="emailFormControl.hasError('email') && !emailFormControl.hasError('required')">-->
-        <!--Please enter a valid email address-->
-      <!--</mat-error>-->
-      <!--<mat-error *ngIf="emailFormControl.hasError('required')">-->
-        <!--Email is <strong>required</strong>-->
-      <!--</mat-error>-->
-    <!--</mat-form-field>-->
-  <!--</form>-->
-<!--</div>-->
-
 <div id="name_container">
   <img id="logo" src="../assets/img_survey_host/root/logo.png">
-  <h2>What is your name?</h2>
+  <h2 id="prompt">What is your name?</h2>
   <div class="row">
     <input id="user_name" placeholder = "Your Name Here" [(ngModel)]="username">
     <button id="ok-btn" *ngIf="username" (click)="to_survey()">ok</button>

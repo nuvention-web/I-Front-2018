@@ -1,4 +1,4 @@
-import {AfterContentChecked, AfterViewInit, Component, OnChanges, OnInit, Renderer2, ElementRef,} from '@angular/core';
+import {AfterContentChecked, AfterViewInit, Component, OnChanges, OnInit, Renderer2, ElementRef} from '@angular/core';
 import { SurveyResultService } from '../service/survery-result.service';
 import { ResponseForm } from '../model/response-form';
 import {FormControl, Validators} from '@angular/forms';
@@ -90,6 +90,7 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
       block: 'start',
     });
   }
+
   ngOnChanges() {
   }
 
@@ -109,6 +110,7 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
         this.card = val;
       }
     });
+
     if (this.card !== undefined) {
       this.result_cards = this.card;
 
@@ -139,7 +141,7 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
         behavior: 'smooth',
         block: 'start',
       });
-    }, 2500);
+    }, 4000);
 
     this.input.addEventListener('keyup', function(event) {
       event.preventDefault();
@@ -162,7 +164,6 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     const third_page = document.getElementById('third_page');
     first_page_text.style.opacity = '1';
     first_page.scrollIntoView();
-    // first_page.scrollTop = first_page.scrollHeight;
 
     this.render.setStyle(first_page, 'padding-top', (this.window_height / 3).toString() + 'px' );
     this.render.setStyle(first_page, 'padding-bottom', (this.window_height).toString() + 'px' );
