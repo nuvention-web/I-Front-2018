@@ -332,6 +332,7 @@ and (max-device-width : 850px)  {
 
   #id_right {
     width: 100vw;
+    padding-bottom: 4rem;
   }
 
   #bottle_img {
