@@ -8,8 +8,8 @@ import 'rxjs/add/operator/map';
 import { Router } from '@angular/router';
 
 //// change here for local testing
-const perf_back_api = 'http://127.0.0.1:5000/';
-// const perf_back_api = 'http://ec2-18-237-88-77.us-west-2.compute.amazonaws.com/';
+// const perf_back_api = 'http://127.0.0.1:5000/';
+const perf_back_api = 'http://ec2-18-237-88-77.us-west-2.compute.amazonaws.com/';
 
 @Injectable()
 export class SurveyResultService {
