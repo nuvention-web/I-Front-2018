@@ -31,7 +31,7 @@
   </div>
   <div id="user_questions" class="slides fade" *ngFor="let question of questions let j = index">
     <h2>{{question}}</h2>
-    <div class="option-btn-row">
+    <div class="option-btn-container">
       <button class="prev" (click)="plusSlides(-1)">&#10094;</button>
       <div class="option-btn-row">
         <button class="option-btn" mat-button *ngFor="let one of options[j] let i = index" [value]="i" (click)="register(i)">
