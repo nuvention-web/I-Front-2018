@@ -1,6 +1,93 @@
 img {
-  width: 12rem;
-  height: 8rem;
+  width: 14rem;
+  height: 9rem;
+  object-fit: cover;
+  border-radius: 5px;
+}
+
+#logo {
+  width: 15rem;
+  height: 12rem;
+}
+
+/* user name */
+#name_container {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+  /*margin-top: 15rem;*/
+  /*padding-top: 12rem;*/
+  margin: auto;
+
+  /* center up the view port*/
+  /*width: 50%;*/
+  /*height: 50%;*/
+  /*margin: auto;*/
+  /*position: fixed;*/
+  /*top: 0; left: 0; bottom: 0; right: 0;*/
+  /*z-index: 999;*/
+}
+
+#prompt {
+  padding-top: 5%;
+}
+
+#user_name {
+  border: none;
+  border-bottom: 2px solid papayawhip;
+  outline: none;
+}
+
+#ok-btn {
+  border: 1px solid papayawhip;
+  background-color: transparent;
+}
+
+.user_name:focus {
+  /*border: 3px solid #555;*/
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: inherit;
+}
+
+#user_questions h2, #name_container h2 {
+  font-weight: lighter;
+  font-size: xx-large;
+}
+
+#ok-btn {
+  border: 1px solid darkslategray;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-left: 0.5rem;
+  /*justify-content: center;*/
+  text-align: center;
+  line-height: 1em;
+  padding-right: 1.2rem;
+}
+
+#customer_info {
+  /*margin-top: 3rem;*/
+  padding-top: 3rem;
+  justify-content: center;
+  margin-bottom: 4rem;
+}
+
+#customer_info h1 {
+  font-size: 4rem;
+  font-weight: lighter;
+}
+
+#customer_info h1, h4 {
+  line-height: 3rem;
+}
+
+#customer_info h4 {
+  font-size: 1.5rem;
 }
 
 /* slides */
@@ -13,30 +100,43 @@ img {
   justify-content: center;
 }
 
-.survey_container {
+#survey_container {
+  /*margin-top: 40rem;*/
+  /*margin-bottom: 10rem;*/
   display: flex;
   flex-direction: column;
   text-align: center;
   justify-content: center;
+  align-items: center;
+  align-content: center;
 }
 
 /* button */
 
-.option-btn-row {
+.option-btn-container, .option-btn-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-item: center;
 }
 
+.option-btn p {
+  margin-top: 0.5rem;
+  font-size: medium;
+}
+
 .mat-button {
-  background-color: floralwhite;
+  border: 0.5px solid lightgoldenrodyellow;
+  background-color: rgba(255,227,244, 0.4);
   display: flex;
   flex-direction: column;
-  width: 12rem;
-  padding: 0px 0px;
+  justify-content: center;
+  width: 15rem;
+  /*padding: 0px 0px;*/
+  padding: 0.5rem 0.5rem;
   max-width: inherit;
   white-space: pre-wrap;
+  border-radius: 5px;
 
   margin:0 0.25rem;
   line-height: 0;
@@ -56,10 +156,17 @@ img {
   font-size: 18px;
   transition: 0.6s ease;
   border: none;
+  background-color: floralwhite;
+}
+
+button:active,
+button:focus {
+  -moz-outline-style: none;
+  outline: none;
 }
 
 .prev:hover, .next:hover {
-  background-color: navajowhite;
+  background-color: #FFE3F4;
   color: slategrey;
 }
 
@@ -80,7 +187,7 @@ img {
 }
 
 .active, .dot:hover {
-  background-color: orange;
+  background-color: rgb(255,227,244);
 }
 
 /* Fading animation */
@@ -99,4 +206,78 @@ img {
 @keyframes fade {
   from {opacity: .4}
   to {opacity: 1}
+}
+
+
+@media screen and (max-width: 400px) {
+  #customer_info h4 {
+    margin-top: -0.5rem;
+  }
+
+  #user_questions h2{
+    margin-top: -2.5rem;
+  }
+
+  #customer_info h1 {
+    margin-top: -1.5rem;
+  }
+}
+
+/* Media Rules */
+@media screen and (max-width: 850px) {
+  #prompt {
+    padding-bottom: 1rem;
+  }
+
+  .option-btn-row {
+    diplay: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+  }
+
+  .option-btn-container {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .option-btn img {
+    width: 100%;
+  }
+
+  #ok-btn {
+    border: 1px solid papayawhip;
+    background-color: transparent;
+  }
+
+  img {
+    width: 90%;
+    height: 5rem;
+  }
+
+  .desc {
+    font-size: small;
+    font-weight: lighter;
+    padding-top: 0.5rem;
+  }
+
+  .mat-button {
+    width: 46%;
+    height: 11rem;
+    margin-bottom: 1%;
+  }
+
+  #user_questions {
+    margin-top: -2rem;
+  }
+
+  #user_questions h2 {
+    width: 85%;
+    margin-left: 7.5%;
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
+  }
+
+  /*#survey_container {*/
+    /*margin-bottom: -10rem;*/
+  /*}*/
 }
