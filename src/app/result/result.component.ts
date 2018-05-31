@@ -1,7 +1,7 @@
 import {AfterContentChecked, AfterViewInit, Component, OnChanges, OnInit, Renderer2, ElementRef} from '@angular/core';
 import { SurveyResultService } from '../service/survery-result.service';
 import { ResponseForm } from '../model/response-form';
-import {FormControl, Validators} from '@angular/forms';
+import { FormControl, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-result',
@@ -9,19 +9,15 @@ import {FormControl, Validators} from '@angular/forms';
   styleUrls: ['./result.component.css']
 })
 export class ResultComponent implements OnInit, AfterContentChecked, AfterViewInit, OnChanges {
-  emailFormControl = new FormControl('', [
+  userEmail = new FormControl('', [
     Validators.required,
     Validators.email,
   ]);
-
   private input: any;
   isDataLoaded = false;
-  public user_email = '';
   button_checker = [false, false, false];
   public show_purchase = false;
   public card: any;
-  // public video_URL: string;
-  // public image_URL: string;
   public result_cards = [];
   window_width: number;
   window_height: number;
@@ -40,9 +36,15 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     return processed_url;
   }
 
+  getErrorMessage() {
+    return this.userEmail.hasError('required') ? 'You must enter an email' :
+      this.userEmail.hasError('email') ? 'Not a valid email' :
+        '';
+  }
+
   goto_purchase() {
-    if (this.user_email !== '') {
-      this.surService.send_result(this.result_cards, this.user_email);
+    if (!this.userEmail.hasError('email')) {
+      this.surService.send_result(this.result_cards, this.userEmail.value);
     } else {
       document.getElementById('email_area').focus();
     }

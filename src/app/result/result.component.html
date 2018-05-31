@@ -41,8 +41,9 @@
       </div>
       <div id="buttons">
         <mat-form-field class="example-full-width">
-          <input matInput id="email_area" [(ngModel)]="user_email" placeholder="Enter your email"
-                 required [email]="true" [autofocus]="true">
+          <input matInput id="email_area" [formControl]="userEmail" placeholder="Enter your email"
+                 required [autofocus]="true">
+          <mat-error *ngIf="userEmail.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <button id="purchase_btn" (click)="goto_purchase()">Purchase or <br> get a free card sample</button>
       </div>
