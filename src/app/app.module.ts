@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { FacebookModule } from 'ngx-facebook';
 
 // Material
 import { MatRadioModule, MatButtonModule } from '@angular/material';
@@ -36,6 +37,7 @@ import { ResultComponent } from './result/result.component';
     MatInputModule,
     BrowserAnimationsModule,
     SurveyModule,
+    FacebookModule.forRoot(),
     routes,
   ],
   providers: [SurveyResultService],

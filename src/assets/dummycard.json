@@ -1,0 +1,30 @@
+{
+    "response": {
+        "Cards": [
+            {
+                "name": "Navigator",
+                "accord": "Honeysuckle",
+                "image_lnk": "https://i.pinimg.com/originals/05/4d/47/054d47a4e782a56bef5823d5ed186abc.jpg",
+                "vid_lnk": "",
+                "start_time": 0,
+                "description": "Strong yet humble, Navigators are down to earth and provide warmth, comfort, and stability to people in their lives.  Stable, conservative, and sometimes stubborn, Navigators are ready to endure and stick to their choices until they reach the point of personal satisfaction./Your fragrance is a deep and sweet, yet light and peaceful, blend of yellow floral and nectarous honey."
+            },
+            {
+                "name": "Achiever",
+                "accord": "lsd",
+                "image_lnk": "https://spotlight.it-notes.ru/wp-content/uploads/2017/04/5e792c5523e16c12dc6d36014936460b.jpg",
+                "vid_lnk": "",
+                "start_time": 0,
+                "description": "Achievers are continuously looking for dynamic, speed, and competition, and enjoy being the first in everything — from work to social gatherings.  It is in their nature to take action, sometimes before they think about it well.  You'll rarely meet an Achiever who isn't capable of finishing several things at once, but sometimes struggles to work well with others./Your energizing fragrance is crisp and dynamic with blends of natural, fresh scents."
+            },
+            {
+                "name": "Enthusiast",
+                "accord": "magenta",
+                "image_lnk": "https://free4kwallpaper.com/wp-content/uploads/2016/01/Fruit-Trees-in-the-Forest-4K-Wallpaper.jpg",
+                "vid_lnk": "",
+                "start_time": 0,
+                "description": "Enthusiasts are dramatic, creative, self-confident, dominant, and extremely difficult to resist, able to achieve nearly anything they want in any area of life they commit to.  Self-confident and attractive, Enthusiasts are capable of uniting different groups of people and leading them as one towards a shared cause./Your fun, charming scent blends with other fragrances to make a complex and unique personal statement."
+            }
+        ]
+    }
+}
