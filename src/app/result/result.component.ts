@@ -1,7 +1,9 @@
 import {AfterContentChecked, AfterViewInit, Component, OnChanges, OnInit, Renderer2, ElementRef} from '@angular/core';
 import { SurveyResultService } from '../service/survery-result.service';
 import { ResponseForm } from '../model/response-form';
+import { HttpClient } from '@angular/common/http';
 import { FormControl, Validators } from '@angular/forms';
+import { FacebookService, InitParams, UIParams, UIResponse } from 'ngx-facebook';
 
 @Component({
   selector: 'app-result',
@@ -25,7 +27,16 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
 
   constructor(public surService: SurveyResultService,
               public render: Renderer2,
-              public el: ElementRef) { }
+              public el: ElementRef,
+              public http: HttpClient,
+              private fb: FacebookService) {
+                const initParams: InitParams = {
+                  appId: '1702384233188262',
+                  xfbml: true,
+                  version: 'v2.8'
+                };
+        fb.init(initParams);
+  }
 
   // modify youtube url string to autoplay at given time without control display
   set_youtube_url(url) {
@@ -93,6 +104,44 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
     });
   }
 
+  fbShare() {
+    console.log('facebook share button');
+    const params: UIParams = {
+      // method: 'share',
+      // action_type: 'og.likes',
+      // action_properties: JSON.stringify({
+      //   object: 'https://www.tryperf.com',
+      // })
+
+      method: 'share_open_graph',
+              action_type: 'og.shares',
+              action_properties: JSON.stringify({
+                object : {
+                  'og:url': 'https://www.tryperf.com', // your url to share
+                  'og:title': 'perf - Find your personalized scent today!', // this is the segment that goes on FB
+                  'og:description': 'I am '
+                                    +  `${this.result_cards[0].name}` + ', '
+                                    +  `${this.result_cards[1].name}` + ', and '
+                                    +  `${this.result_cards[2].name}` + '.'
+                                    + ' Who are you?',
+                  'og:image:url': 'https://s3.amazonaws.com/survey.tryperf.com/assets/img_survey_host/root/logo_smaller.png',
+                  'og:image:width': '300',
+                  'og:image:height': '100',
+                }
+              })
+    };
+
+    this.fb.ui(params)
+      .then((res: UIResponse) => console.log(res))
+      .catch((e: any) => console.error(e));
+
+    // FB.ui({
+    //   display: 'popup',
+    //   method: 'share',
+    //   href: 'https://developers.facebook.com/docs/',
+    // }, function(response){});
+  }
+
   ngOnChanges() {
   }
 
@@ -113,6 +162,9 @@ export class ResultComponent implements OnInit, AfterContentChecked, AfterViewIn
       }
     });
 
+    // if (this.card === undefined) {
+    //   this.card = this.http.get('../../assests/dummycard.json');
+    // }
     if (this.card !== undefined) {
       this.result_cards = this.card;
 

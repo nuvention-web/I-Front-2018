@@ -46,12 +46,11 @@
           <mat-error *ngIf="userEmail.invalid">{{getErrorMessage()}}</mat-error>
         </mat-form-field>
         <button id="purchase_btn" (click)="goto_purchase()">Purchase or <br> get a free card sample</button>
+        <button id="fbshare-btn" (click)="fbShare()">
+          <img src="../../assets/img_survey_host/root/fb-logo.svg">
+          Share on Facebook
+        </button>
       </div>
-      <!--for fb social media share feature-->
-      <!--<div id="fb-root"></div>-->
-      <!--<a href="http://www.google.com/" data-image="Article img url" data-title="Article Title" data-desc="Some description for this article" class="fb_share">-->
-        <!--<img src="http://www.synermous.com/data/images/fb-icon.svg" alt="" width="50" height="50">-->
-      <!--</a>-->
     </div>
   </div>
 </div>

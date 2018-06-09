@@ -198,6 +198,22 @@ hr {
   transition: opacity 1s;
 }
 
+#fbshare-btn {
+  display: flex;
+  flex-direction: row;
+  margin-top: 0.5rem;
+  width: 11rem;
+  height: 4rem;
+  background-color: dodgerblue;
+  color: whitesmoke;
+  border-radius: 3px;
+  border: yellow;
+  font-size: small;
+  align-items: center;
+
+  transition: opacity 1s;
+}
+
 input::placeholder { /* Chrome/Opera/Safari */
   color: black;
   -webkit-text-fill-color: darkslategray;

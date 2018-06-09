@@ -15,14 +15,14 @@
   <div id="user_questions" class="slides fade" *ngFor="let question of questions let j = index">
     <h2>{{question}}</h2>
     <div class="option-btn-container">
-      <button class="prev" (click)="plusSlides(-1)">&#10094;</button>
+      <!--<button class="prev" (click)="plusSlides(-1)">&#10094;</button>-->
       <div class="option-btn-row">
         <button class="option-btn" mat-button *ngFor="let one of options[j] let i = index" [value]="i" (click)="register(i)">
           <img src="../assets/img_survey_host/cards/{{j}}/{{i}}.png" (error)="imgerrorhandler($event)">
           <p class="desc">{{one}}</p>
         </button>
       </div>
-      <button class="next" (click)="plusSlides(1)">&#10095;</button>
+      <!--<button class="next" (click)="plusSlides(1)">&#10095;</button>-->
     </div>
   </div>
 
