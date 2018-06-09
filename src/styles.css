@@ -1,10 +1,21 @@
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/purple-green.css";
 
-html, body {
-  background-color: white;
-  min-height: 100%;
+html, body, h1, h2, h4, p {
+  /*background-color: white;*/
+  min-height: 1.5rem;
   /*font-family: monaco,Consolas,"Lucida Console",monospace*/
   /*font-family: "Arial Black","Arial Bold",Gadget,sans-serif;*/
-  font-family: "Montserrat",sans-serif
+  font-family: "Montserrat",sans-serif;
+  font-weight: lighter;
+  margin: 0;
+}
+
+/*disable scroll */
+html, body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+body {
+  position: relative;
 }

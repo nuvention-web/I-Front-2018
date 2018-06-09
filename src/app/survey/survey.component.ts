@@ -1,10 +1,6 @@
-import {AfterViewInit, Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, AfterContentChecked, Renderer2} from '@angular/core';
 import { ElementRef } from '@angular/core';
 import { SurveyResultService } from '../service/survery-result.service';
-// import { ResponseForm } from '../model/response-form';
-// import {FormControl, Validators} from '@angular/forms';
-
-
 import { Router } from '@angular/router';
 
 @Component({
@@ -12,14 +8,7 @@ import { Router } from '@angular/router';
   templateUrl: './survey.component.html',
   styleUrls: ['./survey.component.css']
 })
-export class SurveyComponent implements OnInit, AfterViewInit {
-  // Not used here, but will be used in the purchase page
-  // emailFormControl = new FormControl('', [
-  //   Validators.required,
-  //   Validators.email,
-  // ]);
-  //
-
+export class SurveyComponent implements OnInit, AfterViewInit, AfterContentChecked {
   username  = '';
   public input: any;
   res_one = -1;
@@ -33,24 +22,27 @@ export class SurveyComponent implements OnInit, AfterViewInit {
   questions = ['How would you want to spend your vacation?',
               'Who are you at a party?',
               'How do you want others to remember you?',
-              'Time machine was just release. When would you go?',
+              'If a time machine was just released,  would you go?',
               'What is your ideal night out?',
               'What is your style?'];
-
 
   option_one = ['Enjoying a fruity drink and an ocean breeze', 'Walking through a serene garden in full bloom',
     'Tasting exotic cuisines and decadent desserts', 'Adventuring off the grid and deep into nature'];
   option_two = ['Fly on the wall', 'The life of the party', 'Deep converser', 'Nah, I\'d stay at home'];
-  option_three = ['Nice and Friendly', 'Intelligent and wise', 'Achiever', 'Mediator'];
+  option_three = ['Nice and fiendly', 'Intelligent and wise', 'Candid and open', 'Warm and caring'];
   option_four = ['90s', '2000s', '2010s', 'Just stay where I am'];
   option_five = ['Clubbing', 'Kickback', 'Night in', 'Dinner and movie'];
   // option_six = ['Work or school', 'Formal event', 'Casual outing', 'Chillin\''];
   option_seven = ['Simple and classic', 'Trendy and hipster', 'Casual and comfortable', 'Dress to impress'];
   options = [this.option_one, this.option_two, this.option_three, this.option_four, this.option_five, this.option_seven];
 
+  window_width: number;
+  window_height: number;
+
   constructor(public router: Router,
               public surResult: SurveyResultService,
-              private elementRef: ElementRef) { }
+              private elementRef: ElementRef,
+              private render: Renderer2) { }
 
   register(i) {
     if (this.res[this.slideIndex - 1] !== undefined) {
@@ -134,17 +126,32 @@ export class SurveyComponent implements OnInit, AfterViewInit {
     this.showSlides(this.slideIndex = n);
   }
 
-  ngOnInit() {
-    this.input = document.getElementById('user_name');
-    let width = Number(window.innerWidth);
-    let height = window.innerHeight;
-    document.getElementById('survey_container').style.marginBottom = width / 60 + 'rem';
+  ngAfterContentChecked() {
+    this.window_width = window.innerWidth;
+    this.window_height = window.innerHeight;
+  }
 
-    document.getElementById('name_container').scrollIntoView({
+  ngOnInit() {
+    this.window_width = window.innerWidth;
+    this.window_height = window.innerHeight;
+
+    this.input = document.getElementById('user_name');
+    // let width = Number(window.innerWidth);
+    // let height = window.innerHeight;
+    // document.getElementById('survey_container').style.marginBottom = width / 60 + 'rem';
+
+    document.getElementById('logo').scrollIntoView({
       behavior: 'smooth',
       block: 'center',
-      inline: 'nearest'
     });
+
+    const name_container = document.getElementById('name_container');
+    const survey_container = document.getElementById('survey_container');
+
+    this.render.setStyle(name_container, 'padding-top', (this.window_height / 4).toString() + 'px' );
+    this.render.setStyle(name_container, 'padding-bottom', (this.window_height).toString() + 'px' );
+    this.render.setStyle(survey_container, 'padding-top', (this.window_height / 3).toString() + 'px' );
+    this.render.setStyle(survey_container, 'padding-bottom', (this.window_height).toString() + 'px' );
   }
 
 }

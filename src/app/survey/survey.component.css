@@ -6,7 +6,7 @@ img {
 }
 
 #logo {
-  width: 12rem;
+  width: 15rem;
   height: 12rem;
 }
 
@@ -17,7 +17,7 @@ img {
   align-items: center;
   align-content: center;
   /*margin-top: 15rem;*/
-  padding-top: 12rem;
+  /*padding-top: 12rem;*/
   margin: auto;
 
   /* center up the view port*/
@@ -27,6 +27,10 @@ img {
   /*position: fixed;*/
   /*top: 0; left: 0; bottom: 0; right: 0;*/
   /*z-index: 999;*/
+}
+
+#prompt {
+  padding-top: 5%;
 }
 
 #user_name {
@@ -74,12 +78,16 @@ img {
 }
 
 #customer_info h1 {
-  font-size: xx-large;
+  font-size: 4rem;
   font-weight: lighter;
 }
 
 #customer_info h1, h4 {
-  line-height: 0.5rem;
+  line-height: 3rem;
+}
+
+#customer_info h4 {
+  font-size: 1.5rem;
 }
 
 /* slides */
@@ -93,8 +101,8 @@ img {
 }
 
 #survey_container {
-  margin-top: 40rem;
-  margin-bottom: auto;
+  /*margin-top: 40rem;*/
+  /*margin-bottom: 10rem;*/
   display: flex;
   flex-direction: column;
   text-align: center;
@@ -108,8 +116,13 @@ img {
 .option-btn-container, .option-btn-row {
   display: flex;
   flex-direction: row;
-  justify-content: center;
+  justify-content: space-evenly;
   align-item: center;
+}
+
+.option-btn p {
+  margin-top: 0.5rem;
+  font-size: medium;
 }
 
 .mat-button {
@@ -196,13 +209,39 @@ button:focus {
 }
 
 
+@media screen and (max-width: 400px) {
+  #customer_info h4 {
+    margin-top: -0.5rem;
+  }
+
+  #user_questions h2{
+    margin-top: -2.5rem;
+  }
+
+  #customer_info h1 {
+    margin-top: -1.5rem;
+  }
+}
+
 /* Media Rules */
 @media screen and (max-width: 850px) {
+  #prompt {
+    padding-bottom: 1rem;
+  }
+
   .option-btn-row {
     diplay: flex;
     flex-wrap: wrap;
-    justify-content: flex-start;
-    /*flex-direction: column;*/
+    justify-content: space-evenly;
+  }
+
+  .option-btn-container {
+    margin-left: 1%;
+    margin-right: 1%;
+  }
+
+  .option-btn img {
+    width: 100%;
   }
 
   #ok-btn {
@@ -216,12 +255,29 @@ button:focus {
   }
 
   .desc {
-    font-size: xx-small;
+    font-size: small;
+    font-weight: lighter;
+    padding-top: 0.5rem;
   }
 
   .mat-button {
-    width: 47%;
+    width: 46%;
     height: 11rem;
     margin-bottom: 1%;
   }
+
+  #user_questions {
+    margin-top: -2rem;
+  }
+
+  #user_questions h2 {
+    width: 85%;
+    margin-left: 7.5%;
+    font-size: 1.2rem;
+    padding-bottom: 1rem;
+  }
+
+  /*#survey_container {*/
+    /*margin-bottom: -10rem;*/
+  /*}*/
 }

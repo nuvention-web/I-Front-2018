@@ -1,18 +1,144 @@
-/*#page {*/
-  /*display: flex;*/
-/*}*/
+body {
+  /*-webkit-overflow-scrolling: auto;*/
+  overflow: hidden;
+  margin-left: 0px;
+  margin-top: 0px;
+  opacity: 1;
+  transition: 1s opacity;
+}
+
+#logo {
+  padding-top: 1rem;
+  width: 15rem;
+  height: 12rem;
+}
+
+html {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+#first_page, #second_page, #third_page, #id_left, #id_right, #distill_first, #item_display {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+#first_page_text {
+  font-weight: normal;
+  font-size: 4rem;
+}
+
+#distill_first {
+  position: absolute;
+  z-index: 1;
+  transition: opacity 2s;
+  text-align: center;
+  font-size: large;
+}
+
+#item_display {
+  position: absolute;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 2s;
+
+  width: 100vw;
+  height: 100vh;
+  flex-direction: row;
+  /*justify-content: space-evenly;*/
+  /*align-items: center;*/
+}
+
+#id_right {
+  line-height: 3rem;
+  width: 25vw;
+  justify-content: left;
+}
+
+/deep/ .mat-input-underline {
+  background-color: #FF0000;    /* replace this color with your accent color hex code */
+}
+
+input.mat-input-element {
+  color: darkslategray;
+}
+
+input.mat-input-element::placeholder {
+  color: darkslategray;
+}
+
+#id_left {
+  width: 25vw;
+  justify-content: right;
+}
+
+#bottle_img {
+  width: 25rem;
+  height: 25rem;
+}
+
+#buttons {
+  display: flex;
+  flex-direction: column;
+}
+
+#profiles {
+  display: flex;
+  flex-direction: column;
+  width: 50vw;
+  align-items: center;
+}
+
+/* Arrow start */
+.arrow_wrapper {
+  font-family: inherit;
+  font-size: 1.2rem;
+  font-weight: lighter;
+
+  -webkit-border-radius: 5px;
+  -moz-border-radius: 5px;
+  border-radius: 5px;
+  background-color: orange;
+  color: whitesmoke;
+  border: yellow;
+  margin-bottom: 3rem;
+  width: 50%;
+  height:10%;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  z-index: 30;
+
+  /*visibility: hidden;*/
+  opacity: 0;
+  transition: opacity 2s;
+}
+
+#down_arrow {
+  /*color: #FFE3F4;*/
+  font-size: large;
+  color: pink;
+  margin-left: -1.5rem;
+  margin-right: 0.5rem;
+}
+/* Arrow end */
 
 #row_cards {
+  position: absolute;
   display: flex;
   flex-direction: row;
   transition: opacity 1s ease-in-out 0.3s;
+  margin: inherit;
 }
 
 .cards {
   display: flex;
   flex-direction: column;
-  width: 33%;
-  height: 98vh;
+  width: 33vw;
+  height: 100vh;
   border: black 1px solid;
   background-repeat: no-repeat;
   background-size: cover;
@@ -20,7 +146,7 @@
   justify-content: center;
 }
 
-.text_intro, #flipover {
+.text_intro  {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -30,14 +156,17 @@
   text-align: center;
   color: whitesmoke;
   margin-top: 15%;
+  width: 80%;
+  height: 100%;
 }
 
 #backdrop {
   position: absolute;
   z-index: 10;
   background-color: rgba(0, 0, 0, 0.4);
-  width: 99vw;
-  height: 98vh;
+  width: 100vw;
+  height: 100vh;
+  margin: inherit;
 }
 
 hr {
@@ -49,53 +178,106 @@ hr {
   transition: opacity 0.5s ease-in-out 0.2s;
 }
 
-.purchase_btn {
-  margin-top: 17rem;
-  margin-left: 3rem;
-  position: absolute;
+.card_desc {
+  font-size: large;
+}
 
-  visibility: hidden;
-  z-index: 20;
+.card_desc_italicize {
+  font-style: italic;
+}
 
+#purchase_btn {
   width: 11rem;
   height: 4rem;
   background-color: orange;
   color: whitesmoke;
   border-radius: 3px;
   border: yellow;
+  font-size: small;
 
   transition: opacity 1s;
 }
 
-.email_holder {
-  z-index: 30;
-  visibility: hidden;
-  color: white;
-  position: absolute;
-  margin-top: 12rem;
-  margin-left: 3rem;
+input::placeholder { /* Chrome/Opera/Safari */
+  color: black;
+  -webkit-text-fill-color: darkslategray;
+}
+
+intput.mat-input-element {
+  -webkit-text-fill-color: darkslategray;
+}
+
+#email_area {
+  -webkit-text-fill-color: darkslategray;
 }
 
 
-/*.mat-form-field-invalid .mat-input-element, .mat-warn .mat-input-element {*/
-  /*color: white;*/
-/*}*/
 
-mat-form-field {
-  color: white;
-}
+
 
 /* Media Rules */
-@media screen and (max-width: 850px) {
+@media only screen
+and (max-width: 400px) {
+
+  .card_content, .card_desc, .card_desc_italicize {
+    font-size: 0.8rem;
+  }
+
+  .text_intro br {
+    display: none;
+  }
+
+  .text_intro h1 {
+    font-size: large;
+  }
+
+  .arrow_wrapper {
+    font-size: small;
+    text-align: center;
+  }
+
+  #id_right {
+    position:  absolute;
+    width: 100vw;
+  }
+
+  #bottle_img {
+    display: none;
+  }
+}
+
+
+@media only screen
+and (max-device-width : 850px)  {
+  @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
+
+  #page {
+    display: flex;
+    justify-content: center;
+  }
+
+  #first_page {
+    align-items: center;
+  }
+
+  #first_page_text {
+    font-weight: normal;
+    font-size: 2rem;
+  }
+
+  #first_page h1 {
+    font-size: 1rem;
+    text-align: center;
+  }
+
   #row_cards {
+    display: flex;
     flex-direction: column;
   }
 
   .cards {
-    /*display: flex;*/
-    /*flex-direction: column;*/
-    width: 100%;
-    height: 33vh;
+    width: 99vw;
+    height: 33.3vh;
     border: black 1px solid;
     background-repeat: no-repeat;
     background-size: cover;
@@ -107,18 +289,54 @@ mat-form-field {
     position: absolute;
     z-index: 10;
     background-color: rgba(0, 0, 0, 0.4);
-    width: 99vw;
-    height: 100%;
+    width: 100vw;
+    height: 100vh;
   }
 
-  .email_holder {
-    margin-top: -4rem;
-    margin-right: 1rem;
+  .card_desc {
+    width: 98%;
   }
 
-  .purchase_btn {
-    margin-top: 3rem;
-    margin-right: 1rem;
+  .text_intro {
+    width: 100%;
+    align-items: center;
+  }
+
+  .text_intro h1 {
+    display: flex;
+    align-items: center;
+    font-weight: lighter;
+    margin-top: 0;
+  }
+
+  .card_desc {
+    margin-top: -3rem;
+  }
+
+  .card_desc_italicize {
+    margin-top: 6rem;
+  }
+
+  .text_intro hr {
+    display: none;
+  }
+
+  .arrow_wrapper {
+    height: 40%;
+    margin-bottom: 1rem;
+  }
+
+  #item_display {
+    flex-direction: column;
+  }
+
+  #id_right {
+    width: 100vw;
+    padding-bottom: 4rem;
+  }
+
+  #bottle_img {
+    display: none;
   }
 }
 
